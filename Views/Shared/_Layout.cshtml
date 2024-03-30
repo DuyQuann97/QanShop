@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - QanShop</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/QanShop.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    <img src="/img/icon/logo.png" alt="Alternate Text" width="180" height="20"/>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Trang Chủ</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarShirtMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Áo Nam
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarShirtMenuLink">
+                                <li><a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Shirt">Áo Nam</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Shirt">Áo Nam</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Shirt">Áo Nam</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarTrouserMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Quần Nam
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarTrouserMenuLink">
+                                <li><a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Trouser">Quần Nam</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Trouser">Quần Nam</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Trouser">Quần Nam</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="d-flex bd-highlight">
+                @*Search Bar*@
+                <div class="wave-group">
+                    <input required="" type="text" class="input">
+                    <span class="bar"></span>
+                    <label class="label">
+                        <span class="label-char" style="--index: 0">N</span>
+                        <span class="label-char" style="--index: 1">a</span>
+                        <span class="label-char" style="--index: 2">m</span>
+                        <span class="label-char" style="--index: 3">e</span>
+                    </label>
+                </div>
+
+                @*Add to Cart*@
+                <button data-quantity="0" class="btn-cart">
+                    <svg class="icon-cart" viewBox="0 0 24.38 30.52" height="30.52" width="24.38" xmlns="http://www.w3.org/2000/svg">
+                        <title>icon-cart</title>
+                        <path transform="translate(-3.62 -0.85)" d="M28,27.3,26.24,7.51a.75.75,0,0,0-.76-.69h-3.7a6,6,0,0,0-12,0H6.13a.76.76,0,0,0-.76.69L3.62,27.3v.07a4.29,4.29,0,0,0,4.52,4H23.48a4.29,4.29,0,0,0,4.52-4ZM15.81,2.37a4.47,4.47,0,0,1,4.46,4.45H11.35a4.47,4.47,0,0,1,4.46-4.45Zm7.67,27.48H8.13a2.79,2.79,0,0,1-3-2.45L6.83,8.34h3V11a.76.76,0,0,0,1.52,0V8.34h8.92V11a.76.76,0,0,0,1.52,0V8.34h3L26.48,27.4a2.79,2.79,0,0,1-3,2.44Zm0,0"></path>
+                    </svg>
+                    <span class="quantity"></span>
+                </button>
+
+            </div>
+        </nav>
+
+
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="d-flex justify-content-around">
+           <div>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    <img src="/img/icon/logo.png" alt="Alternate Text" width="180" height="20"/>
+                </a>
+                <div class="d-flex">
+                    <img src="/svg/mobile-phone.svg" width="25" height="25"/>
+                    <p>Tổng đài CSKH: 0123456789</p>
+                </div>
+                <div class="d-flex">
+                    <img src="/svg/email.svg" width="25" height="25"/>
+                    <p>Email: cskh@qanshop.com</p>
+                </div>
+                <h5>ĐĂNG KÝ NHẬN TIN</h5>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Nhập địa chỉ email" aria-label="Recipient's username" aria-describedby="button-addon2">
+                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Đăng Ký</button>
+                </div>
+
+                <h5>KẾT NỐI VỚI CHÚNG TÔI</h5>
+                <div>
+                    <img src="/svg/facebook.svg" width="32" height="32"/>
+                    <img src="/svg/instagram.svg" width="32" height="32"/>
+                    <img src="/svg/tiktok.svg" width="32" height="32"/>
+                    <img src="/svg/youtube.svg" width="32" height="32"/>
+                </div>
+            </div>
+
+            <div>
+                <h4>HỖ TRỢ KHÁCH HÀNG</h4>
+                <p>Chính sách đổi hàng và bảo hành</P>
+                <p>Chính sách Membership</P>
+                <p>Chính sách ưu đãi sinh nhật</P>
+                <p>Chính sách bảo mật</P>
+            </div>
+
+            <div>
+                <h4>HỆ THỐNG CỬA HÀNG</h4>
+                <P>| Store 1: 12-12Bis, CMT8, P.Bến Thành, Q.1, HCM</P>
+                <P>| Store 2: 484, Lê Văn Sỹ, P.14, Q.3, HCM</P>
+                <P>| Store 3: 477 - 481, Sư Vạn Hạnh, P.12, Q.10, HCM</P>
+                <P>| Store 4: 261, Quang Trung, P.10, Q.Gò Vấp, HCM</P>
+            </div>
+
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
