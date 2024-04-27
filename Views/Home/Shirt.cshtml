@@ -1,6 +1,19 @@
-﻿@{
+﻿@model IEnumerable<QanShop.Models.Domains.Product>
+
+@{
     ViewData["Title"] = "Áo Nam";
 }
 <h1>@ViewData["Title"]</h1>
 
-<p>đây là page áo nam</p>
+<article>
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+        @foreach (var item in Model)
+        {
+            if (item.CategoryId.ToString() == "c3db2a52-7b83-4b61-8863-f42d8a06d389")
+            {
+                <vc:item-card product=@item />
+            }
+
+        }
+    </div>
+</article>

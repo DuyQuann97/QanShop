@@ -111,6 +111,21 @@ namespace QanShop.Migrations
                     b.ToTable("products");
                 });
 
+            modelBuilder.Entity("QanShop.Models.Domains.Role", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("roles");
+                });
+
             modelBuilder.Entity("QanShop.Models.Domains.User", b =>
                 {
                     b.Property<Guid>("Id")
@@ -137,6 +152,9 @@ namespace QanShop.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<Guid>("RoleId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("Telephone")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -146,6 +164,8 @@ namespace QanShop.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
 
                     b.ToTable("users");
                 });
@@ -189,6 +209,17 @@ namespace QanShop.Migrations
                         .IsRequired();
 
                     b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("QanShop.Models.Domains.User", b =>
+                {
+                    b.HasOne("QanShop.Models.Domains.Role", "Role")
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Role");
                 });
 #pragma warning restore 612, 618
         }

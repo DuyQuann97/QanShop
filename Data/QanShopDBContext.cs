@@ -15,6 +15,7 @@ namespace QanShop.Data
         public DbSet<Order> orders { get; set; }
         public DbSet<User> users { get; set; }
         public DbSet<Product> products { get; set; }
+       
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             => optionsBuilder.UseSqlServer("name=Default");

@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<QanShop.Models.Domains.Product>
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -31,161 +31,48 @@
 <article>
     <h4>Hàng mới</h4>
     <div class="row row-cols-1 row-cols-md-3 g-4">
-        <div class="col">
-            <div class="card h-100">
-              <img src="/img/shirt/id-006874a_ab9aeff2ade64fcb83b0c4a899edb0e7_large.webp" class="card-img-top" alt="Áo Nam">
-              <div class="card-body">
-                <h5 class="card-title">Áo Thun Regular Teasing Typo</h5>
-              </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card h-100">
-              <img src="/img/shirt/id-006874a_ab9aeff2ade64fcb83b0c4a899edb0e7_large.webp" class="card-img-top" alt="Áo Nam">
-              <div class="card-body">
-                <h5 class="card-title">Áo Thun Regular Teasing Typo</h5>
-              </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card h-100">
-              <img src="/img/shirt/id-006874a_ab9aeff2ade64fcb83b0c4a899edb0e7_large.webp" class="card-img-top" alt="Áo Nam">
-              <div class="card-body">
-                <h5 class="card-title">Áo Thun Regular Teasing Typo</h5>
-              </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card h-100">
-              <img src="/img/shirt/id-006874a_ab9aeff2ade64fcb83b0c4a899edb0e7_large.webp" class="card-img-top" alt="Áo Nam">
-              <div class="card-body">
-                <h5 class="card-title">Áo Thun Regular Teasing Typo</h5>
-              </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card h-100">
-              <img src="/img/shirt/id-006874a_ab9aeff2ade64fcb83b0c4a899edb0e7_large.webp" class="card-img-top" alt="Áo Nam">
-              <div class="card-body">
-                <h5 class="card-title">Áo Thun Regular Teasing Typo</h5>
-              </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card h-100">
-              <img src="/img/shirt/id-006874a_ab9aeff2ade64fcb83b0c4a899edb0e7_large.webp" class="card-img-top" alt="Áo Nam">
-              <div class="card-body">
-                <h5 class="card-title">Áo Thun Regular Teasing Typo</h5>
-              </div>
-            </div>
-        </div>
-        
+        @foreach (var item in Model)
+        {
+            <vc:item-card product=@item/>
+            @* <div class="col">
+                <div class="card h-100">
+                    <img src="@item.ImageUrl" class="card-img-top" alt="Áo Nam">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Name</h5>
+                        <p class="card-title">$@item.price</p>
+                    </div>
+                </div>
+            </div> *@
+        }
+    </div>
+
 </article>
 
 @* Áo Nam *@
 <article>
     <h4>Áo Nam</h4>
     <div class="row row-cols-1 row-cols-md-3 g-4">
-        <div class="col">
-            <div class="card h-100">
-              <img src="/img/shirt/id-006874a_ab9aeff2ade64fcb83b0c4a899edb0e7_large.webp" class="card-img-top" alt="Áo Nam">
-              <div class="card-body">
-                <h5 class="card-title">Áo Thun Regular Teasing Typo</h5>
-              </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card h-100">
-              <img src="/img/shirt/id-006874a_ab9aeff2ade64fcb83b0c4a899edb0e7_large.webp" class="card-img-top" alt="Áo Nam">
-              <div class="card-body">
-                <h5 class="card-title">Áo Thun Regular Teasing Typo</h5>
-              </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card h-100">
-              <img src="/img/shirt/id-006874a_ab9aeff2ade64fcb83b0c4a899edb0e7_large.webp" class="card-img-top" alt="Áo Nam">
-              <div class="card-body">
-                <h5 class="card-title">Áo Thun Regular Teasing Typo</h5>
-              </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card h-100">
-              <img src="/img/shirt/id-006874a_ab9aeff2ade64fcb83b0c4a899edb0e7_large.webp" class="card-img-top" alt="Áo Nam">
-              <div class="card-body">
-                <h5 class="card-title">Áo Thun Regular Teasing Typo</h5>
-              </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card h-100">
-              <img src="/img/shirt/id-006874a_ab9aeff2ade64fcb83b0c4a899edb0e7_large.webp" class="card-img-top" alt="Áo Nam">
-              <div class="card-body">
-                <h5 class="card-title">Áo Thun Regular Teasing Typo</h5>
-              </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card h-100">
-              <img src="/img/shirt/id-006874a_ab9aeff2ade64fcb83b0c4a899edb0e7_large.webp" class="card-img-top" alt="Áo Nam">
-              <div class="card-body">
-                <h5 class="card-title">Áo Thun Regular Teasing Typo</h5>
-              </div>
-            </div>
-        </div>
+        @foreach (var item in Model)
+        {
+            if (item.CategoryId.ToString() == "c3db2a52-7b83-4b61-8863-f42d8a06d389")
+            {
+                <vc:item-card product=@item />
+            }
+
+        }
+    </div>
 </article>
 
 @* Quần Nam *@
 <article>
     <h4>Quần Nam</h4>
     <div class="row row-cols-1 row-cols-md-3 g-4">
-        <div class="col">
-            <div class="card h-100">
-              <img src="/img/trousers/id-003470a_f5d89e60eb12473593862b48a4486311_large_6d2bf9918078492daccc271cf29431f9_large.webp" class="card-img-top" alt="Quần Nam">
-              <div class="card-body">
-                <h5 class="card-title">Quần Jeans Smart Fit Basic</h5>
-              </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card h-100">
-              <img src="/img/trousers/id-003470a_f5d89e60eb12473593862b48a4486311_large_6d2bf9918078492daccc271cf29431f9_large.webp" class="card-img-top" alt="Quần Nam">
-              <div class="card-body">
-                <h5 class="card-title">Quần Jeans Smart Fit Basic</h5>
-              </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card h-100">
-              <img src="/img/trousers/id-003470a_f5d89e60eb12473593862b48a4486311_large_6d2bf9918078492daccc271cf29431f9_large.webp" class="card-img-top" alt="Quần Nam">
-              <div class="card-body">
-                <h5 class="card-title">Quần Jeans Smart Fit Basic</h5>
-              </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card h-100">
-              <img src="/img/trousers/id-003470a_f5d89e60eb12473593862b48a4486311_large_6d2bf9918078492daccc271cf29431f9_large.webp" class="card-img-top" alt="Quần Nam">
-              <div class="card-body">
-                <h5 class="card-title">Quần Jeans Smart Fit Basic</h5>
-              </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card h-100">
-              <img src="/img/trousers/id-003470a_f5d89e60eb12473593862b48a4486311_large_6d2bf9918078492daccc271cf29431f9_large.webp" class="card-img-top" alt="Quần Nam">
-              <div class="card-body">
-                <h5 class="card-title">Quần Jeans Smart Fit Basic</h5>
-              </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card h-100">
-              <img src="/img/trousers/id-003470a_f5d89e60eb12473593862b48a4486311_large_6d2bf9918078492daccc271cf29431f9_large.webp" class="card-img-top" alt="Quần Nam">
-              <div class="card-body">
-                <h5 class="card-title">Quần Jeans Smart Fit Basic</h5>
-              </div>
-            </div>
-        </div>
+        @foreach (var item in Model)
+        {
+            if (item.CategoryId.ToString().ToUpper() == "A54129B6-D73D-4511-BF00-8AB5EA586E5F")
+            {
+                <vc:item-card product=@item />
+            }
+        }
+    </div>
 </article>
