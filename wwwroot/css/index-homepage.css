@@ -1,0 +1,38 @@
+.product-card a {
+    color: var(--dark-color) !important;
+    text-decoration: none !important;
+    transition: 0.3s ease-out;
+}
+
+.product-card a:hover {
+    text-decoration: none !important;
+    color: var(--primary-color) !important;
+}
+
+banner-content > .btn-dark {
+    color: #fff !important;
+    background-color: #212529 !important;
+    border-color: #212529 !important;
+}
+.btn.btn-black {
+    background-color: var(--dark-color) !important;
+    color: var(--light-color) !important;
+    border: none !important;
+}
+
+    .btn.btn-black:hover {
+        background-color: var(--primary-color) !important;
+        color: var(--light-color) !important;
+    }
+
+.search-button {
+    color: #000;
+}
+
+.cat-list-item a {
+    color: #000;
+}
+
+    .cat-list-item a:hover {
+        color: var(--primary-color);
+    }
