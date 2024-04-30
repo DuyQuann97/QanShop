@@ -24,34 +24,6 @@ namespace QanShop.Controllers
             return View(products);
         }
 
-        public IActionResult Shirt()
-        {
-            var products = _dbContext.products.ToList();
-            return View(products);
-        }
-
-        public IActionResult Trouser()
-        {
-            var products = _dbContext.products.ToList();
-            return View(products);
-        }
-
-        public IActionResult Cart()
-        {
-            return View();
-        }
-
-        [HttpGet]
-        [Route("{id:guid}")]
-        public IActionResult PageDetail([FromRoute] Guid id) 
-        {
-            var productById = _dbContext.products.FirstOrDefault(x => x.Id == id);
-            if (productById == null) 
-            {
-                return NotFound();
-            }
-            return View(productById);
-        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
