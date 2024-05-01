@@ -14,7 +14,7 @@
                         <div class="col-md-6">
                             <div class="banner-content">
                                 <h1 class="display-2 text-uppercase text-dark pb-5">Your Products Are Great.</h1>
-                                <a href="shop.html" class="btn btn-medium btn-dark text-uppercase btn-rounded-none">Shop Product</a>
+                                <a asp-controller="Shop" asp-action="Index" class="btn btn-medium btn-dark text-uppercase btn-rounded-none">Shop Product</a>
                             </div>
                         </div>
                         <div class="col-md-5">
@@ -31,7 +31,7 @@
                         <div class="col-md-6">
                             <div class="banner-content">
                                 <h1 class="display-2 text-uppercase text-dark pb-5">Technology Hack You Won't Get</h1>
-                                <a href="shop.html" class="btn btn-medium btn-dark text-uppercase btn-rounded-none">Shop Product</a>
+                                <a asp-controller="Shop" asp-action="Index" class="btn btn-medium btn-dark text-uppercase btn-rounded-none">Shop Product</a>
                             </div>
                         </div>
                         <div class="col-md-5">
@@ -115,7 +115,7 @@
     </div>
 </section>
 
-<section id="mobile-products" class="product-store position-relative padding-large no-padding-top">
+<section id="shirt-products" class="product-store position-relative padding-large no-padding-top">
     <div class="container">
         <div class="row">
             <div class="display-header d-flex justify-content-between pb-3">
@@ -134,18 +134,18 @@
     <div class="swiper-pagination position-absolute text-center"></div>
 </section>
 
-<section id="smart-watches" class="product-store padding-large position-relative">
+<section id="trouser-products" class="product-store padding-large position-relative">
     <div class="container">
         <div class="row">
             <div class="display-header d-flex justify-content-between pb-3">
-                <h2 class="display-7 text-dark text-uppercase">Smart Watches</h2>
+                <h2 class="display-7 text-dark text-uppercase">Trousers</h2>
                 <div class="btn-right">
-                    <a href="shop.html" class="btn btn-medium btn-normal text-uppercase">Go to Shop</a>
+                    <a asp-controller="Shop" asp-action="Index" class="btn btn-medium btn-normal text-uppercase">Go to Shop</a>
                 </div>
             </div>
             <div class="swiper product-watch-swiper">
                 <div class="swiper-wrapper">
-                    @Html.RenderPartialAsync("TrouserPartialView")
+                    @Html.RenderPartialAsync("TrouserPartialView");
                 </div>
             </div>
         </div>

@@ -70,7 +70,7 @@
         slidesPerView: 4,
         spaceBetween: 10,
         pagination: {
-          el: "#mobile-products .swiper-pagination",
+          el: "#shirt-products .swiper-pagination",
           clickable: true,
         },
         breakpoints: {
@@ -89,7 +89,7 @@
         slidesPerView: 4,
         spaceBetween: 10,
         pagination: {
-          el: "#smart-watches .swiper-pagination",
+          el: "#trouser-products .swiper-pagination",
           clickable: true,
         },
         breakpoints: {

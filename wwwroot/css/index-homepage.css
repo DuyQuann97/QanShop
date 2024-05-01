@@ -36,3 +36,7 @@ banner-content > .btn-dark {
     .cat-list-item a:hover {
         color: var(--primary-color);
     }
+
+.product-store .product-card:hover .cart-concern {
+    bottom: 35% !important;
+}

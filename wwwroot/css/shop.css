@@ -1,0 +1,17 @@
+.btn-success {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+}
+
+    .btn-success:hover {
+        background-color: #367b99 !important;
+        border-color: #367b99 !important;
+    }
+a{
+    color: black;
+}
+
+.py-5 {
+    padding-top: 8rem !important;
+    padding-bottom: 3rem !important;
+}

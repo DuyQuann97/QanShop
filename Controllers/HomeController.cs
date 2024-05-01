@@ -4,6 +4,7 @@ using QanShop.Data;
 using QanShop.Models;
 using QanShop.Models.Domains;
 using System.Diagnostics;
+using System.Drawing.Drawing2D;
 
 namespace QanShop.Controllers
 {
@@ -24,7 +25,7 @@ namespace QanShop.Controllers
             return View(products);
         }
 
-
+      
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
