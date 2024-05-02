@@ -84,7 +84,7 @@
 
             @* List Items -- Start*@
             <div class="row">
-                @Html.RenderPartialAsync("ItemPartialView");
+                @{await Html.RenderPartialAsync("ItemPartialView");}
             </div>
             @* List Items -- End*@
             <div div="row">

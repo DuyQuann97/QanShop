@@ -21,7 +21,7 @@ const LoadData = () => {
                                 <td>${row.price}</td>
                                 <td>
                                     <div class="d-flex gap-2">
-                                        <a onclick="loadDataById('${row.id}')" class="btn btn-info btn-circle btn-sm" data-toggle="modal" data-target="#productModal">
+                                        <a onclick="loadDataById('${row.id}')" class="btn btn-info btn-circle btn-sm" data-toggle="modal" data-target="#editProductModal">
                                             <i class="fas fa-info-circle"></i>
                                         </a>
                                         <a onclick="DeleteById('${row.id}')" class="btn btn-danger btn-circle btn-sm">
@@ -91,16 +91,36 @@ function loadDataById(id) {
 }
 
 function RenderModalUpdate(data) {
-    $("#productLabel").text("Update Product");
-    $("#productName").val(data.name);
-    $("#productPrice").val(data.price);
-    $("#imageUrl").val(data.imageUrl);
-    $("#description").val(data.description);
-    $("#categoryID").val(data.categoryId) ;
-    $("#submit").text("Save Update");
-    $("#productModal").modal('show');
+    $("#ProductId").val(data.id);
+    $("#editProductName").val(data.name);
+    $("#editProductPrice").val(data.price);
+    $("#editProductImageUrl").val(data.imageUrl);
+    $("#editProductDescription").val(data.description);
+    $("#editProductCategoryID").val(data.categoryId) ;
+    $("#editProductModal").modal('show');
 }
 
+$("#EditBtn").click(() => {
+    var productName = $("#editProductName").val();
+    var productId = $("#ProductId").val();
+    var productPrice = $("#editProductPrice").val();
+    var imageUrl = $("#editProductImageUrl").val();
+    var categoryID = $("#editProductCategoryID").val();
+    var description = $("#editProductDescription").val();
+
+    $.ajax({
+        type: 'PUT',
+        url: '/Product/EditProduct',
+        data: { Id: productId, Name: productName, Description: description, ImageUrl: imageUrl, price: productPrice, CategoryId: categoryID },
+        success: function (result) {
+            // Handle the response from the controller
+            if (result != null) {
+                $("#editProductModal").modal('hide');
+                LoadData();
+            }
+        }
+    });
+});
 
 // Delete Product
 
@@ -109,7 +129,7 @@ function DeleteById(id) {
     // $("#staticBackdrop").modal('show');
     $.ajax({
         type: 'DELETE',
-        url: '/Product/delete-product',
+        url: '/Product/DeleteProduct',
         data: { id: id },
         success: function (result) {
             LoadData();

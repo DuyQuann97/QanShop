@@ -157,3 +157,7 @@ body {
 .table-responsive{
     overflow-x: hidden !important;
 }
+
+div.dataTables_wrapper div.dataTables_length select {
+    width: 60px !important;
+}

@@ -19,7 +19,7 @@ namespace QanShop.Areas.Admin.Controllers
 
         [Route("")]
         [HttpGet]
-        public IActionResult Product()
+        public IActionResult Index()
         {
             var products = _dbContext.products.ToList();
             return View(products);
@@ -65,7 +65,7 @@ namespace QanShop.Areas.Admin.Controllers
 
 
         [HttpPut]
-        [Route("EditProdcut")]
+        [Route("EditProduct")]
         public async Task<IActionResult> EditProduct(Product product) 
         {
             var item = await _dbContext.products.FirstOrDefaultAsync(x => x.Id == product.Id);
@@ -84,7 +84,7 @@ namespace QanShop.Areas.Admin.Controllers
         }
 
         [HttpDelete]
-        [Route("delete-product")]
+        [Route("DeleteProduct")]
         public async Task<IActionResult> DeleteProduct(Guid id)
         {
             var result = await _dbContext.products.FirstOrDefaultAsync(x => x.Id == id);
