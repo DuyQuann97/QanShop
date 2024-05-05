@@ -12,7 +12,7 @@ const LoadData = () => {
             if (result.length > 0) {
                 result.forEach((row, index) => {
                     let r = `<tr>
-                                <td>${index +1}</td>
+                                <td>${index + 1}</td>
                                 <td>${row.userName}</td>
                                 <td>${row.password}</td>
                                 <td>${row.firstName}</td>
@@ -22,7 +22,7 @@ const LoadData = () => {
                                 <td>${row.telephone}</td>
                                 <td>
                                     <div class="d-flex gap-2">
-                                        <a  onclick="LoadUserById('${row.id}')" class="btn btn-info btn-circle btn-sm" data-toggle="modal" data-target="#editUserModal">
+                                        <a  onclick="LoadDataById('${row.id}')" class="btn btn-info btn-circle btn-sm" data-toggle="modal" data-target="#editUserModal">
                                             <i class="fas fa-info-circle"></i>
                                         </a>
                                         <a onclick="DeleteById('${row.id}')" class="btn btn-danger btn-circle btn-sm">
@@ -41,7 +41,7 @@ const LoadData = () => {
     });
 }
 
-
+// Add User
 $("#submit").click(() => {
     var userName = $("#userName").val();
     var userPassword = $("#userPassword").val();
@@ -73,11 +73,12 @@ $("#submit").click(() => {
     });
 });
 
-//Update Product
-function loadUserById(id) {
+//Update User
+function LoadDataById(id) {
+    console.log(id);
     $.ajax({
         type: 'GET',
-        url: '/User/LoadUserById',
+        url: '/User/LoadDataById',
         data: { id: id },
         success: function (result) {
             console.log(result);
@@ -88,8 +89,8 @@ function loadUserById(id) {
 }
 
 function RenderModalUpdate(data) {
-    $("#UserId").val(data.id);
-    $("#editUserName").val(data.name);
+    $("#userId").val(data.id);
+    $("#editUserName").val(data.userName);
     $("#editUserPassword").val(data.password);
     $("#editUserFirstName").val(data.firstName);
     $("#editUserLastName").val(data.lastName);
@@ -132,7 +133,7 @@ $("#EditUserBtn").click(() => {
     });
 });
 
-// Delete Product
+// Delete User
 
 function DeleteById(id) {
     $.ajax({

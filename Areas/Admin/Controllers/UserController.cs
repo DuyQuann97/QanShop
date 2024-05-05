@@ -10,7 +10,6 @@ namespace QanShop.Areas.Admin.Controllers
     public class UserController : Controller
     {
         private readonly QanShopDBContext _dbContext;
-        public static List<Product> products = new List<Product>();
 
         public UserController(QanShopDBContext dBContext)
         {
@@ -35,7 +34,7 @@ namespace QanShop.Areas.Admin.Controllers
 
         [Route("LoadDataById")]
         [HttpGet]
-        public async Task<IActionResult> LoadUserById(Guid id)
+        public async Task<IActionResult> LoadDataById(Guid id)
         {
             var result = await _dbContext.users.FirstOrDefaultAsync(x => x.Id == id);
             if (result == null)
