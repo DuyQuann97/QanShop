@@ -34,7 +34,8 @@ namespace QanShop.Areas.Admin.Controllers
         }
 
         [Route("LoadDataById")]
-        public async Task<IActionResult> LoadDataById(Guid id)
+        [HttpGet]
+        public async Task<IActionResult> LoadUserById(Guid id)
         {
             var result = await _dbContext.users.FirstOrDefaultAsync(x => x.Id == id);
             if (result == null)

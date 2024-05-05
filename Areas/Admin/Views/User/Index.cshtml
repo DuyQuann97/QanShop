@@ -67,6 +67,7 @@
                                         <th>Email</th>
                                         <th>Địa Chỉ</th>
                                         <th>Phone</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tfoot>
@@ -79,6 +80,7 @@
                                         <th>Email</th>
                                         <th>Địa Chỉ</th>
                                         <th>Phone</th>
+                                        <th>Action</th>
                                     </tr>
                                 </tfoot>
                                 <tbody id="listUser">
@@ -113,6 +115,7 @@
     </div>
     <!-- /.container-fluid -->
     @await Html.PartialAsync("AddUserPartialView")
+    @await Html.PartialAsync("EditUserPartialView")
 
     @section scripts {
         <script src="~/admin/js/user.js"></script>

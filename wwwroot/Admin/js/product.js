@@ -40,7 +40,7 @@ const LoadData = () => {
     });
 }
 
-
+//Add Product
 $("#submit").click(() => {
     var productName = $("#productName").val();
     var productPrice = $("#productPrice").val();
@@ -62,17 +62,6 @@ $("#submit").click(() => {
     });
 });
 
-//Add Product
-function AddProduct()
-{
-    $("#productLabel").text("Add Product");
-    $("#productName").val("");
-    $("#productPrice").val("");
-    $("#imageUrl").val("");
-    $("#description").val("");
-    $("#submit").text("Add Product");
-    $("#ProductModal").modal('show');
-}
 
 //Update Product
 function loadDataById(id) {
