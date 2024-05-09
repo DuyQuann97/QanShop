@@ -12,15 +12,16 @@ const LoadData = () => {
             if (result.length > 0) {
                 result.forEach((row, index) => {
                     let r = `<tr>
-                                <td>${index +1}</td>
-                                <td hidden><input type="text" class="form-control" id="productId" value="${row.id}" placeholder=""></td>
-                                <td>${row.name}</td>
-                                <td>
+                                <td class="text-center" data-productid="${row.id}"><input type="checkbox" class="form-check-input checkbox-item"/></td>
+                                <td class="text-center">${index +1}</td>
+                                <td class="text-center">
                                     <img src="${row.imageUrl}" width=50px alt="ImageIcon" />
                                 </td>
-                                <td>${row.price}</td>
-                                <td>
-                                    <div class="d-flex gap-2">
+                                <td class="text-center">${row.name}</td>
+                                <td class="text-center">${row.price}</td>
+                                <td class="text-center"><input type="checkbox" class="form-check-input checkbox-item" checked/> </td>
+                                <td class="text-center">
+                                    <div class="d-flex gap-2 justify-content-center">
                                         <a onclick="loadDataById('${row.id}')" class="btn btn-info btn-circle btn-sm" data-toggle="modal" data-target="#editProductModal">
                                             <i class="fas fa-info-circle"></i>
                                         </a>
