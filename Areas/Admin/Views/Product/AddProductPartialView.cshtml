@@ -1,6 +1,6 @@
 ﻿<!-- Add Product Modal -->
 <div class="modal fade" id="productModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="productModal" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="productLabel">Add Product</h5>
@@ -9,34 +9,55 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="mb-3">
-                    <label for="productName" class="col-form-label">Product Name</label>
-                    <input type="text" class="form-control" id="productName" value="" placeholder="">
-                </div>
-                <div class="mb-3">
-                    <label for="productPrice" class="col-form-labe">Price</label>
-                    <input type="number" class="form-control" id="productPrice" value="" placeholder="">
-                </div>
-                <div class="mb-3">
-                    <label for="imageUrl" class="col-form-labe">Image Url</label>
-                    <input type="text" class="form-control" id="imageUrl" value="" placeholder="">
+                <div class="d-flex justify-content-between gap-3">
+                    <input type="text" id="productId" value="" hidden />
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="productName" class="col-form-label">Product Name</label>
+                            <input type="text" class="form-control" id="productName" value="" placeholder="">
+                        </div>
+                        <div class="mb-3 d-flex justify-content-between">
+                            <div class="mb-3 d-flex">
+                                <label for="productPrice" class="col-form-labe mr-2 pt-1">Price</label>
+                                <input type="number" class="form-control" id="productPrice" value="" placeholder="" min="1">
+                            </div>
+                            <div class="mb-3 d-flex">
+                                <label class="col-form-labe mr-2 pt-1">Category</label>
+                                <select class="form-select" id="category" aria-label="category"></select>
+                            </div>
+                            <div class="form-check ">
+                                <div class="pt-1">
+                                    <input class="form-check-input " type="checkbox" value="" id="isActive" checked="">
+                                    <label class="form-check-label " for="isActive">
+                                        Active
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="col-form-labe">Description</label>
+                            <textarea class="form-control" id="description" value="" rows="3" style="height: 150px"></textarea>
+                        </div>
+                    </div>
 
-                </div>
-                <div class="mb-3">
-                    <label class="col-form-labe">Category</label>
-                    <select class="form-select" id="categoryID" aria-label="categoryID">
-                        <option selected value="a54129b6-d73d-4511-bf00-8ab5ea586e5f">Trouser</option>
-                        <option value="c3db2a52-7b83-4b61-8863-f42d8a06d389">Shirt</option>
-                    </select>
-                </div>
-                <div class="mb-3">
-                    <label for="description" class="col-form-labe">Description</label>
-                    <textarea class="form-control" id="description" value="" rows="3"></textarea>
-                </div>
+                    <form class="col" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Insert Image</label>
+                            <input class="form-control" type="file" id="formFile">
+                        </div>
+                        <div id="areaimage" class="text-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+                                <rect width="300" height="300" fill="#cccccc"></rect>
+                                <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="monospace" font-size="25px" fill="#333333">300x300</text>
+                            </svg>
+                        </div>
+                    </form>
+                </div>                
+                    
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button id="submit" type="button" class="btn btn-primary">Add Product</button>
+                <button id="submit" type="button" class="btn btn-primary" onclick="ProductModalBtn()">Add Product</button>
             </div>
         </div>
     </div>

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using QanShop.Data;
 
@@ -11,9 +12,11 @@ using QanShop.Data;
 namespace QanShop.Migrations
 {
     [DbContext(typeof(QanShopDBContext))]
-    partial class QanShopDBContextModelSnapshot : ModelSnapshot
+    [Migration("20240511072404_updateIsActive")]
+    partial class updateIsActive
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

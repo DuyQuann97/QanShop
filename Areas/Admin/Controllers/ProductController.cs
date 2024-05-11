@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using QanShop.Common;
 using QanShop.Data;
 using QanShop.Models.Domains;
 
@@ -21,17 +22,21 @@ namespace QanShop.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            var products = _dbContext.products.ToList();
-            return View(products);
+            return View();
         }
 
-
-        [Route("Load-data")]
-        [HttpGet]
-        public async Task<IActionResult> LoadData() 
+        [Route("all")]
+        public async Task<IActionResult> GetAll() 
         {
-            var products = await _dbContext.products.ToListAsync();
-            return Ok(products);
+            try 
+            {
+                var items = await _dbContext.products.Include(x => x.Category).OrderBy(x => x.Name).ToListAsync();
+                return Ok(items);
+            }
+            catch (Exception ex) 
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
 
         [Route("LoadDataById")]
@@ -46,21 +51,26 @@ namespace QanShop.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        [Route("AddProduct")]
-        public async Task<IActionResult> AddProduct(Product product) 
+        [Route("create")]
+        public async Task<IActionResult> Create(Product product,IFormFile file, Guid categoryId) 
         {
-            Product newProduct = new Product 
+            try 
             {
-                Id = Guid.NewGuid(),
-                Name = product.Name,
-                price = product.price,
-                Description = product.Description,
-                ImageUrl = product.ImageUrl,
-                CategoryId = product.CategoryId,
-            };
-            _dbContext.products.Add(newProduct);
-            await _dbContext.SaveChangesAsync();
-            return Ok(newProduct);
+                if (file != null)
+                {
+                    product.ImageUrl = FilesManagement.UploadImage(file);
+                }
+                product.Id = Guid.NewGuid();
+                product.Category =await _dbContext.categories.FirstOrDefaultAsync(x => x.Id == categoryId);
+                await _dbContext.AddAsync(product);
+                await _dbContext.SaveChangesAsync();
+                return Ok(product);
+            } 
+            catch (Exception ex) 
+            {
+                return StatusCode(500, ex.Message);
+            }
+
         }
 
 

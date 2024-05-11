@@ -25,6 +25,20 @@ namespace QanShop.Areas.Admin.Controllers
             return View(categories);
         }
 
+        [Route("all")]
+        public async Task<IActionResult> GetAll()
+        {
+            try
+            {
+                var items = await _dbContext.categories.OrderBy(x => x.Name).ToListAsync();
+                return Ok(items);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
         [Route("Load-data")]
         [HttpGet]
         public async Task<IActionResult> LoadData()
@@ -33,15 +47,22 @@ namespace QanShop.Areas.Admin.Controllers
             return Ok(categories);
         }
 
-        [Route("LoadDataById")]
-        public async Task<IActionResult> LoadDataById(Guid id)
+        [Route("byid")]
+        public async Task<IActionResult> GetById(Guid id)
         {
-            var result = await _dbContext.categories.FirstOrDefaultAsync(x => x.Id == id);
-            if (result == null)
+            try
             {
-                return NotFound();
+                var result = await _dbContext.categories.FirstOrDefaultAsync(x => x.Id == id);
+                if (result == null)
+                {
+                    return NotFound();
+                }
+                return Ok(result);
             }
-            return Ok(result);
+            catch (Exception ex) 
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
 
 
