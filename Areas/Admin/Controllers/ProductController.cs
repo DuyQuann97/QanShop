@@ -39,15 +39,22 @@ namespace QanShop.Areas.Admin.Controllers
             }
         }
 
-        [Route("LoadDataById")]
-        public async Task<IActionResult> LoadDataById(Guid id)
+        [Route("byid/{id}")]
+        public async Task<IActionResult> GetById(Guid id)
         {
-            var result = await _dbContext.products.FirstOrDefaultAsync(x => x.Id == id);
-            if (result == null)
+            try 
             {
-                return NotFound();
+                var result = await _dbContext.products.FirstOrDefaultAsync(x => x.Id == id);
+                if (result == null)
+                {
+                    return NotFound();
+                }
+                return Ok(result);
             }
-            return Ok(result);
+            catch(Exception ex) 
+            {
+                return StatusCode(500, ex.Message); 
+            }
         }
 
         [HttpPost]
@@ -75,36 +82,52 @@ namespace QanShop.Areas.Admin.Controllers
 
 
         [HttpPut]
-        [Route("EditProduct")]
-        public async Task<IActionResult> EditProduct(Product product) 
+        [Route("update")]
+        public async Task<IActionResult> Update(Product product,IFormFile file, Guid categoryId) 
         {
-            var item = await _dbContext.products.FirstOrDefaultAsync(x => x.Id == product.Id);
-            if (item != null) 
+            try
             {
+                var item = await _dbContext.products.FirstOrDefaultAsync(x => x.Id == product.Id);
+                if (item == null) return NotFound();
+                if (file != null)
+                {
+                    item.ImageUrl = FilesManagement.UploadImage(file);
+                }
+                item.Category = await _dbContext.categories.FirstOrDefaultAsync(x => x.Id == categoryId);
                 item.Name = product.Name;
-                item.price = product.price;
                 item.Description = product.Description;
-                item.ImageUrl = product.ImageUrl;
-                item.CategoryId = product.CategoryId;
+                item.price = product.price;
+                item.IsActive = product.IsActive;   
                 _dbContext.products.Update(item);
                 await _dbContext.SaveChangesAsync();
+                return Ok(product);
             }
-
-            return Ok(item);
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
 
         [HttpDelete]
-        [Route("DeleteProduct")]
-        public async Task<IActionResult> DeleteProduct(Guid id)
+        [Route("delete")]
+        public async Task<IActionResult> Delete(List<Guid> ids)
         {
-            var result = await _dbContext.products.FirstOrDefaultAsync(x => x.Id == id);
-            if (result == null)
+            try 
             {
-                return NotFound();
+                foreach (var id in ids)
+                {
+                    var result = await _dbContext.products.FirstOrDefaultAsync(x => x.Id == id);
+                    if (result == null) return NotFound(id);
+                    if (!string.IsNullOrEmpty(result.ImageUrl)) FilesManagement.RemoveImage(result.ImageUrl);
+                    _dbContext.products.Remove(result);
+                }
+                await _dbContext.SaveChangesAsync();
+                return Ok();
+            } catch (Exception ex) 
+            {
+                return StatusCode(500,ex.Message);
             }
-            _dbContext.products.Remove(result);
-            await _dbContext.SaveChangesAsync();
-            return Ok();
+            
         }
     }
 }

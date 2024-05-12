@@ -14,9 +14,15 @@
             <h6 class="m-0 font-weight-bold text-primary">Product DataTables</h6>
 
             <!-- Button trigger modal -->
-            <a href="#" id="addProduct" class="btn btn-primary text-end" data-toggle="modal" data-target="#productModal">
-                Add Product
-            </a>
+            <div>
+                <a href="#" id="deleteProduct" onclick="Deleted()" class="btn btn-danger text-end">
+                    Delete
+                </a>
+
+                <a href="#" id="addProduct" onclick="resetModal()" class="btn btn-primary text-end" data-toggle="modal" data-target="#productModal">
+                    Add Product
+                </a>
+            </div>
         </div>
         <div class="card-body">
             <div class="table-responsive text-nowrap">
@@ -68,8 +74,7 @@
         </div>
     </div>
 <!-- /.container-fluid -->
-    @await Html.PartialAsync("AddProductPartialView")
-    @await Html.PartialAsync("EditProductPartialView")
+@await Html.PartialAsync("ProductPartialView")
 
     @section scripts {
         <script src="~/admin/js/product.js"></script>
