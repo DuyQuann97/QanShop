@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using QanShop.Data;
+using Microsoft.AspNetCore.Identity;
+using QanShop.Areas.Identity.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +10,11 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<QanShopDBContext>(
     option => option.UseSqlServer(builder.Configuration.GetConnectionString("Default"))
     );
+
+
+builder.Services.AddDefaultIdentity<QanShopUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<QanShopUserContext>();
+builder.Services.AddDbContext<QanShopUserContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("QanShopUserContextConnection")));
+builder.Services.AddRazorPages();
 
 var app = builder.Build();
 
@@ -26,6 +33,7 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+app.MapRazorPages();
 
 app.MapControllerRoute(
     name: "admin",

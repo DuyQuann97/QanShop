@@ -9,7 +9,7 @@
         public Guid UserId { get; set; }
 
         //Navigation Properties
-        public Cart Cart { get; set; }
-        public User User { get; set; }
+        public Cart? Cart { get; set; }
+        public User? User { get; set; }
     }
 }

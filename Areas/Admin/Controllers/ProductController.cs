@@ -67,8 +67,8 @@ namespace QanShop.Areas.Admin.Controllers
                 {
                     product.ImageUrl = FilesManagement.UploadImage(file);
                 }
+                product.Category = await _dbContext.categories.FirstOrDefaultAsync(x => x.Id == categoryId);
                 product.Id = Guid.NewGuid();
-                product.Category =await _dbContext.categories.FirstOrDefaultAsync(x => x.Id == categoryId);
                 await _dbContext.AddAsync(product);
                 await _dbContext.SaveChangesAsync();
                 return Ok(product);

@@ -5,7 +5,7 @@
         public static string wwwroot = Directory.GetCurrentDirectory() + "\\wwwroot";
 
         //Upload Images
-        public static string UploadImage(IFormFile image) 
+        public static string? UploadImage(IFormFile image) 
         {
             if (image != null && image.Length > 0)
             {
