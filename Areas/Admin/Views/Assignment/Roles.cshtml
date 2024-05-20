@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewData["Title"] = "Roles";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<!-- Begin Page Content -->
+<!-- DataTales Example -->
+<div class="card shadow">
+    <div class="card-header py-3 d-flex justify-content-between">
+        <h6 class="m-0 font-weight-bold text-primary">Roles DataTables</h6>
+
+        <!-- Button trigger modal -->
+        <div>
+            <a href="#" id="deleteAccount" onclick="Deleted()" class="btn btn-danger text-end">
+                Delete
+            </a>
+
+            <a href="#" id="addAccount" onclick="resetModal()" class="btn btn-primary text-end" data-toggle="modal" data-target="#roleModal">
+                Add New Role
+            </a>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive text-nowrap">
+            <table class="table table-bordered table-hover">
+                <colgroup>
+                    <col style="width: 20%" />
+                    <col style="width: 20%" />
+                    <col style="width: 20%" />
+                    <col style="width: 20%" />
+                    <col style="width: 20%" />
+                </colgroup>
+                <thead>
+                    <tr class="text-center">
+                        <th>
+                            <div class="text-center">
+                                <span style="color: white">.</span>
+                                <input type="checkbox" id="allCheckbox" class="form-check-input" />
+                            </div>
+                        </th>
+                        <th>Role's Name</th>
+                        <th>Description</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="listRole"></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- /.container-fluid -->
+@await Html.PartialAsync("RolePartialView")
+
+@section scripts {
+    <script src="~/admin/js/role.js"></script>
+}
+
+

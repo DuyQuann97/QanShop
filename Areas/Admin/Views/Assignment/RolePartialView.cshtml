@@ -1,0 +1,30 @@
+﻿<!--Product Modal -->
+<div class="modal fade" id="roleModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="roleModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="roleLabel">Add role</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="d-flex justify-content-between gap-3">
+                    <input type="text" id="roleId" value="" hidden />
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="roleName" class="col-form-label">Role's Name</label>
+                            <input type="text" class="form-control" id="roleName" value="" placeholder="">
+                        </div>
+                    </div>
+
+                </div>                
+                    
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button id="submit" type="button" class="btn btn-primary" onclick="RoleModalBtn()">OK</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -12,7 +12,10 @@ builder.Services.AddDbContext<QanShopDBContext>(
     );
 
 
-builder.Services.AddDefaultIdentity<QanShopUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<QanShopUserContext>();
+builder.Services.AddDefaultIdentity<QanShopUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddRoles<IdentityRole>()
+                .AddEntityFrameworkStores<QanShopUserContext>();
+
 builder.Services.AddDbContext<QanShopUserContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("QanShopUserContextConnection")));
 builder.Services.AddRazorPages();
 

@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<!-- Begin Page Content -->
+<!-- DataTales Example -->
+<div class="card shadow">
+    <div class="card-header py-3 d-flex justify-content-between">
+        <h6 class="m-0 font-weight-bold text-primary">Account DataTables</h6>
+
+        <!-- Button trigger modal -->
+        <div>
+            <a href="#" id="deleteAccount" onclick="Deleted()" class="btn btn-danger text-end">
+                Delete
+            </a>
+
+            <a href="#" id="addAccount" onclick="resetModal()" class="btn btn-primary text-end" data-toggle="modal" data-target="#accountModal">
+                Add New Account
+            </a>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive text-nowrap">
+            <table class="table table-bordered table-hover">
+                <colgroup>
+                    <col style="width: 5%" />
+                    <col style="width: 20%" />
+                    <col style="width: 20%" />
+                    <col style="width: 20%" />
+                    <col style="width: 10%" />
+                    <col style="width: 10%" />
+                    <col style="width: 10%" />
+                </colgroup>
+                <thead>
+                    <tr class="text-center">
+                        <th>
+                            <div class="text-center">
+                                <span style="color: white">.</span>
+                                <input type="checkbox" id="allCheckbox" class="form-check-input" />
+                            </div>
+                        </th>
+                        <th>Tài khoản</th>
+                        <th>Thư điện tử</th>
+                        <th>Xác nhận Email</th>
+                        <th>Điện thoại</th>
+                        <th>Trạng thái</th>
+                        <th>Sự kiện</th>
+                    </tr>
+                </thead>
+                <tbody id="listAccount"></tbody>
+                <tfoot>
+                    <tr class="text-center">
+                        <th>
+                            <div class="text-center">
+                                <span style="color: white">.</span>
+                                <input type="checkbox" id="allCheckbox" class="form-check-input" />
+                            </div>
+                        </th>
+                        <th>Tài khoản</th>
+                        <th>Thư điện tử</th>
+                        <th>Xác nhận Email</th>
+                        <th>Điện thoại</th>
+                        <th>Trạng thái</th>
+                        <th>Sự kiện</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- /.container-fluid -->
+@await Html.PartialAsync("AccountPartialView")
+
+@section scripts {
+    <script src="~/admin/js/account.js"></script>
+}
+
