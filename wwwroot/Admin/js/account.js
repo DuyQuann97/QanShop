@@ -25,7 +25,7 @@ const RenderTable = () => {
                                 <td class="text-center align-middle">${item.lockoutEnabled ? 'Đã kích Hoạt' : 'Chưa kích hoạt'}</td>
                                 <td class="text-center">
                                     <div class="d-flex gap-2 justify-content-center">
-                                        <a onclick="UpdateById('${item.id}')" class="btn btn-info btn-circle btn-sm" data-toggle="modal" data-target="#productModal">
+                                        <a onclick="UpdateById('${item.id}')" class="btn btn-info btn-circle btn-sm" data-toggle="modal" data-target="#accountModal">
                                             <i class="fas fa-info-circle"></i>
                                         </a>
                                     </div>
@@ -49,31 +49,21 @@ function UpdateById(id)
 {
     $.ajax({
         type: 'GET',
-        url: '/Product/byid/' + id,
+        url: '/Account/byid/' + id,
         success: function (result) {
-            console.log(result);
             //Handle the response from the controller
             if (result != null) {
-                $("#productId").val(result.id)
-                $("#productName").val(result.name);
-                $("#productPrice").val(result.price);
-                $("#isActive").prop('checked', result.isActive);
-                $("#category").val(result.categoryId);
-                $("#description").val(result.description);
-                $("#formFile").val();
-                $("#areaimage").empty();
-                $("#areaimage").append(`<img src="${result.imageUrl}" class="img-fluid" alt="Image" />`);
-                $('#productModal').modal('show');
+                $("#userId").val(result.id);
+                $("#userName").val(result.userName);
+                $("#userEmail").val(result.email);
+                $("#passWordInput").hide();
+                $("#isEmailConfirmed").prop('checked', result.emailConfirmed); 
+                
             }
         }
     });
 }
 
-//Xử hiển thị Image ở Modal
-$('#formFile').change(function () {
-    $('#areaimage').empty();
-    $('#areaimage').append(`<img src="${URL.createObjectURL(this.files[0])}" class="img-fluid" alt="Image" />`);
-});
 
 // Xử lý sự kiện reset form modal sau khi create/update
 function resetModal()
@@ -95,12 +85,12 @@ $("#isEmailConfirmed").on('change', function () {
 })
 
 //Create and Update: xử lý khởi tạo item và cập nhật 
-function ProductModalBtn() {
+function AccoutnModalBtn() {
     var userId = $("#userId").val();
     var userName = $("#userName").val();
     var userEmail = $("#userEmail").val();
     var userPassword = $("#password").val();
-    var isEmailConfirmed = $("#isEmailConfirmed").is(':checked');
+    var isEmailConfirmed = $("#isEmailConfirmed").val();
 
     //create form data
     if (userId === '') {
@@ -112,7 +102,7 @@ function ProductModalBtn() {
                 userName: userName,
                 email: userEmail,
                 password: userPassword,
-                EmailConfirmed: isEmailConfirmed
+                emailConfirmed: isEmailConfirmed
             },
 
             success: function (result) {
@@ -130,10 +120,13 @@ function ProductModalBtn() {
     {
         $.ajax({
             type: 'PUT',
-            url: '/Account/create',
-            data: formData,
+            url: '/Account/update/' + userId,
+            data: {
+                userName: userName,
+                email: userEmail,
+                emailConfirmed: isEmailConfirmed
+            },
             success: function (result) {
-                console.log(result);
                 //Handle the response from the controller
                 if (result != null) {
                     $("#accountModal").modal('hide');
@@ -172,7 +165,7 @@ function Deleted()
     if (listItems.length > 0) {
         $.ajax({
             type: 'DELETE',
-            url: '/Product/delete',
+            url: '/Account/delete',
             data: { ids: listItems },
             success: function (result) {
                 alert('thành công');
