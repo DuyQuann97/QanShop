@@ -78,5 +78,47 @@ namespace QanShop.Areas.Admin.Controllers
         }
 
         #endregion
+
+        #region Permission
+
+        [Route("permission")]
+        public async Task<IActionResult> Permission() 
+        {
+            return View();
+        }
+
+        [Route("permission/all")]
+        public async Task<IActionResult> GetAllPermission() 
+        {
+            var query = from userrole in _userContext.UserRoles
+                        join user in _userContext.Users on userrole.UserId equals user.Id
+                        join role in _userContext.Roles on userrole.RoleId equals role.Id
+                        select new
+                        {
+                            userrole.UserId,
+                            user.UserName,
+                            user.Email,
+                            userrole.RoleId,
+                            RoleName = role.Name,
+                        };
+
+            var result= await query.ToListAsync();
+            return Ok(result);
+        }
+
+        [Route("permission/create")]
+        public async Task<IActionResult> CreatePermission(string userId, string roleId) 
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            var roleName =  _roleManager.FindByIdAsync(roleId).Result?.Name;
+            if (roleName == "") return BadRequest("Role Not Found");
+
+            var result =await _userManager.AddToRoleAsync(user, roleName);
+            if (result.Succeeded) return Ok();
+            return BadRequest(result.Errors);
+        }
+
+
+        #endregion
     }
 }
