@@ -167,12 +167,8 @@
                           </svg>
                         </a>
                       </li>
-                      <li class="pe-3">
-                        <a href="#">
-                          <svg class="user">
-                            <use xlink:href="#user"></use>
-                          </svg>
-                        </a>
+                      <li>
+                          <partial name="_LoginPartial" />
                       </li>
                       <li>
                         <a asp-controller="Cart" asp-action="Index">
@@ -182,7 +178,6 @@
                         </a>
                       </li>
                     </ul>
-                    <partial name="_LoginPartial" />
                   </div>
                 </li>
               </ul>
