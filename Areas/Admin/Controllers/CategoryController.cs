@@ -39,7 +39,7 @@ namespace QanShop.Areas.Admin.Controllers
             }
         }
 
-        [Route("Load-data")]
+        [Route("load-data")]
         [HttpGet]
         public async Task<IActionResult> LoadData()
         {
@@ -47,7 +47,7 @@ namespace QanShop.Areas.Admin.Controllers
             return Ok(categories);
         }
 
-        [Route("byid")]
+        [Route("byid/{id}")]
         public async Task<IActionResult> GetById(Guid id)
         {
             try
@@ -67,7 +67,7 @@ namespace QanShop.Areas.Admin.Controllers
 
 
         [HttpPost]
-        [Route("AddCategory")]
+        [Route("Add")]
         public async Task<IActionResult> AddCategory(Category category)
         {
             Category newCategory = new Category
@@ -82,7 +82,7 @@ namespace QanShop.Areas.Admin.Controllers
 
 
         [HttpPut]
-        [Route("EditCategory")]
+        [Route("Edit")]
         public async Task<IActionResult> EditCategory(Category category)
         {
             var item = await _dbContext.categories.FirstOrDefaultAsync(x => x.Id == category.Id);
@@ -97,17 +97,27 @@ namespace QanShop.Areas.Admin.Controllers
         }
 
         [HttpDelete]
-        [Route("DeleteCategory")]
-        public async Task<IActionResult> DeleteCategory(Guid id)
+        [Route("delete")]
+        public async Task<IActionResult> DeleteCategory(List<Guid> ids)
         {
-            var result = await _dbContext.categories.FirstOrDefaultAsync(x => x.Id == id);
-            if (result == null)
+            try 
             {
-                return NotFound();
+                foreach (var id in ids)
+                {
+                    var result = await _dbContext.categories.FirstOrDefaultAsync(x => x.Id == id);
+                    if (result == null)
+                    {
+                        return NotFound();
+                    }
+                    _dbContext.categories.Remove(result);
+                }
+                await _dbContext.SaveChangesAsync();
+                return Ok();
+            }catch (Exception ex) 
+            {
+                return StatusCode(500, ex.Message);
             }
-            _dbContext.categories.Remove(result);
-            await _dbContext.SaveChangesAsync();
-            return Ok();
+            
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿<!-- Add Category Modal -->
-<div class="modal fade" id="addCategoryModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="categoryModal" aria-hidden="true">
+<div class="modal fade" id="categoryModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="categoryModal" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -8,7 +8,12 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
+            
             <div class="modal-body">
+                <div class="mb-3">
+                    <label for="editCategoryName" class="col-form-label">Category ID</label>
+                    <input type="text" class="form-control" id="categoryId" value="" placeholder="" disabled>
+                </div>
                 <div class="mb-3">
                     <label for="addCategoryName" class="col-form-label">Category Name</label>
                     <input type="text" class="form-control" id="addCategoryName" value="" placeholder="">
@@ -16,7 +21,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button id="submit" type="button" class="btn btn-primary">Add Category</button>
+                <button id="submit" type="button" class="btn btn-primary" onclick="CategoryModalBtn()">Add Category</button>
             </div>
         </div>
     </div>
