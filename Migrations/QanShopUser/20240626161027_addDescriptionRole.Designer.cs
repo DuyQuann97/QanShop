@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using QanShop.Data;
 
@@ -11,9 +12,11 @@ using QanShop.Data;
 namespace QanShop.Migrations.QanShopUser
 {
     [DbContext(typeof(QanShopUserContext))]
-    partial class QanShopUserContextModelSnapshot : ModelSnapshot
+    [Migration("20240626161027_addDescriptionRole")]
+    partial class addDescriptionRole
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -143,9 +146,6 @@ namespace QanShop.Migrations.QanShopUser
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .HasMaxLength(256)

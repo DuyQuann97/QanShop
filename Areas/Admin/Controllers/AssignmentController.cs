@@ -10,11 +10,11 @@ namespace QanShop.Areas.Admin.Controllers
     [Route("assignment")]
     public class AssignmentController : Controller
     {
-        private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly RoleManager<ApplicationRole> _roleManager;
         private readonly UserManager<QanShopUser> _userManager;
         private readonly QanShopUserContext _userContext;
 
-        public AssignmentController(RoleManager<IdentityRole> roleManager,
+        public AssignmentController(RoleManager<ApplicationRole> roleManager,
                                     UserManager<QanShopUser> userManager,
                                     QanShopUserContext userContext)
         {
@@ -46,7 +46,7 @@ namespace QanShop.Areas.Admin.Controllers
 
         [Route("roles")]
         [HttpPost]
-        public async Task<IActionResult> CreateRole(IdentityRole role) 
+        public async Task<IActionResult> CreateRole(ApplicationRole role) 
         {
             role.NormalizedName = role.Name.ToUpper();
             var check = await _roleManager.FindByNameAsync(role.NormalizedName);
@@ -57,10 +57,16 @@ namespace QanShop.Areas.Admin.Controllers
 
         [Route("roles")]
         [HttpPut]
-        public async Task<IActionResult> UpdateRole(Guid id, IdentityRole role) 
+        public async Task<IActionResult> UpdateRole(ApplicationRole role) 
         {
-            role.Id = id.ToString();
-            var result = await _roleManager.UpdateAsync(role);
+            var oldRole = await _roleManager.FindByIdAsync(role.Id);
+            if (oldRole == null) return NotFound();
+
+            oldRole.Name = role.Name;
+            oldRole.NormalizedName = role.Name.ToUpper();
+            oldRole.Description = role.Description;
+            oldRole.IsActive = role.IsActive;
+            var result = await _roleManager.UpdateAsync(oldRole);
             return Ok(result);
         }
 

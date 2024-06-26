@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using QanShop.Data;
 using Microsoft.AspNetCore.Identity;
 using QanShop.Areas.Identity.Data;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +14,7 @@ builder.Services.AddDbContext<QanShopDBContext>(
 
 
 builder.Services.AddDefaultIdentity<QanShopUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddRoles<IdentityRole>()
+                .AddRoles<ApplicationRole>()
                 .AddEntityFrameworkStores<QanShopUserContext>();
 
 builder.Services.AddDbContext<QanShopUserContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("QanShopUserContextConnection")));

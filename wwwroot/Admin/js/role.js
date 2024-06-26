@@ -3,6 +3,7 @@
 $(document).ready(() => {
     RenderTable();
     renderCategory();
+    resetModal();
 });
 
 
@@ -19,8 +20,8 @@ const RenderTable = () => {
                     let r = `<tr>
                                 <td class="text-center" data-id="${item.id}"><input type="checkbox" class="form-check-input checkbox-item"/></td>
                                 <td class="text-center align-middle">${item.name}</td>
-                                <td class="text-center align-middle"></td>
-                                <td class="text-center align-middle"></td>
+                                <td class="text-center align-middle">${item.description}</td>
+                                <td class="text-center align-middle ${item.isActive ? 'bg-success' : 'bg-danger'}">${item.isActive ? 'Kích hoạt' : 'Không Kích Hoạt'}</td>
                                 <td class="text-center">
                                     <div class="d-flex gap-2 justify-content-center">
                                         <a onclick="UpdateById('${item.id}')" class="btn btn-info btn-circle btn-sm" data-toggle="modal" data-target="#productModal">
@@ -60,6 +61,8 @@ function UpdateById(id)
             if (result != null) {
                 $("#roleId").val(result.id)
                 $("#roleName").val(result.name);
+                $("#roleDescription").val(result.description);
+                $("#roleIsActive").prop('checked', result.isActive);
                 $('#roleModal').modal('show');
             }
         }
@@ -72,10 +75,12 @@ function resetModal()
 {
     $("#roleId").val('');
     $("#roleName").val('');
+    $("#roleDescription").val('');
+    $("#roleIsActive").prop('checked', true);
 }
 
 //xử lý sự kiện check-box true and fasle
-$("#isEmailConfirmed").on('change', function () {
+$("#roleIsActive").on('change', function () {
     if ($(this).is(':checked')) {
         $(this).attr('value', 'true');
     } else {
@@ -87,6 +92,8 @@ $("#isEmailConfirmed").on('change', function () {
 function RoleModalBtn() {
     var roleId = $("#roleId").val();
     var roleName = $("#roleName").val();
+    var roleDescription = $("#roleDescription").val();
+    var roleIsActive = $("#roleName").val();
 
     //create form data
     if (roleId === '') {
@@ -95,7 +102,9 @@ function RoleModalBtn() {
             type: 'POST',
             url: '/assignment/roles/',
             data: {
-                name: roleName
+                name: roleName,
+                description: roleDescription,
+                isActive: roleIsActive
             },
 
             success: function (result) {
@@ -117,7 +126,9 @@ function RoleModalBtn() {
             data:
             {
                 id: roleId,
-                name: roleName
+                name: roleName,
+                description: roleDescription,
+                isActive: roleIsActive
             },
             success: function (result) {
                 //Handle the response from the controller
@@ -125,6 +136,7 @@ function RoleModalBtn() {
                     $("#roleModal").modal('hide');
                     resetModal();
                     RenderTable();
+                    alert("Update Thành công");
                 }
             }
         });

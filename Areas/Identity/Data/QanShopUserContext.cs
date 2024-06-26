@@ -5,7 +5,7 @@ using QanShop.Areas.Identity.Data;
 
 namespace QanShop.Data;
 
-public class QanShopUserContext : IdentityDbContext<QanShopUser>
+public class QanShopUserContext : IdentityDbContext<QanShopUser, ApplicationRole, string>
 {
     public QanShopUserContext(DbContextOptions<QanShopUserContext> options)
         : base(options)
