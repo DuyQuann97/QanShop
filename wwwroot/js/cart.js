@@ -8,6 +8,7 @@ $(document).ready(() => {
 // Xử lý hiển thị dữ liệu table 
 const RenderTable = () => {
     $("#cartItem").empty();
+    $('#totalPrice').empty();
     $.ajax({
         type: 'GET',
         url: '/cart/all',
