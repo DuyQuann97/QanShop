@@ -126,6 +126,7 @@
             </div>
             <div class="swiper product-swiper">
                 <div class="swiper-wrapper">
+                    <div id="ShirtItems"></div>
                     @Html.RenderPartialAsync("ShirtPartialView");
                 </div>
             </div>
@@ -145,6 +146,7 @@
             </div>
             <div class="swiper product-watch-swiper">
                 <div class="swiper-wrapper">
+                    <div id="ShortItems"></div>
                     @Html.RenderPartialAsync("TrouserPartialView");
                 </div>
             </div>
@@ -152,3 +154,7 @@
     </div>
     <div class="swiper-pagination position-absolute text-center"></div>
 </section>
+
+@section scripts {
+    <script src="~/js/cart.js"></script>
+}

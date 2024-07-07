@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using QanShop.Data;
@@ -25,6 +26,12 @@ namespace QanShop.Controllers
             return View(products);
         }
 
+        [Route("all")]
+        public async Task<IActionResult> Get() 
+        {
+            var productItem = _dbContext.products.ToListAsync();
+            return Ok(productItem);
+        }
       
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

@@ -168,9 +168,6 @@
                         </a>
                       </li>
                       <li>
-                          <partial name="_LoginPartial" />
-                      </li>
-                      <li>
                         <a asp-controller="Cart" asp-action="Index">
                           <svg class="cart">
                             <use xlink:href="#cart"></use>
@@ -235,6 +232,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/script.js"></script>
+    <script src="~/js/cart.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
