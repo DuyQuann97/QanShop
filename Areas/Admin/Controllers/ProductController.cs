@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using QanShop.Common;
 using QanShop.Data;
@@ -8,6 +9,7 @@ namespace QanShop.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Route("Product")]
+    [Authorize]
     public class ProductController : Controller
     {
         private readonly QanShopDBContext _dbContext;

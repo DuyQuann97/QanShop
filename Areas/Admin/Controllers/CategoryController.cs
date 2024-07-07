@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using QanShop.Data;
 using QanShop.Models.Domains;
@@ -7,6 +8,7 @@ namespace QanShop.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Route("Category")]
+    [Authorize]
     public class CategoryController : Controller
     {
         private readonly QanShopDBContext _dbContext;

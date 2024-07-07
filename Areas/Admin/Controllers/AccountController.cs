@@ -10,6 +10,7 @@ namespace QanShop.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Route("Account")]
+    [Authorize]
     public class AccountController : Controller
     {
         private readonly UserManager<QanShopUser> _userManager;

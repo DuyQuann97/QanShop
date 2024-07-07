@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using QanShop.Data;
 using QanShop.Models.Domains;
 
@@ -6,6 +7,7 @@ namespace QanShop.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Route("Admin")]
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly QanShopDBContext _dbContext;
