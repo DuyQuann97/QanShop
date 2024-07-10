@@ -11,7 +11,7 @@ const RenderTable = () => {
     $('#totalPrice').empty();
     $.ajax({
         type: 'GET',
-        url: '/cart/all',
+        url: 'https://localhost:7071/Cart',
         success: function (result) {
             if (result.length > 0) {
                 var tolal = 0;
@@ -56,16 +56,17 @@ function UpdateCart()
 
 //Xử Lý thêm giỏ hàng
 function AddCart(id) {
-    var soluong = 1;
+    var item = {
+        productId: id,
+        quantity: 1
+    }
     $.ajax({
+        url: 'https://localhost:7071/Cart/create',
         type: 'POST',
-        url: '/cart/add',
-        data: {
-            ProductId: id,
-            Quantity: soluong
-        },
+        dataType: 'json',
+        contentType: 'application/json',
+        data: JSON.stringify(item),
         success: function (result) {
-            console.log(result)
             alert('thành công');
         }
     });
@@ -75,7 +76,7 @@ function AddCart(id) {
 function DeleteCart(id) {
     $.ajax({
         type: 'DELETE',
-        url: '/cart/delete/' + id,
+        url: 'https://localhost:7071/Cart/delete/' + id,
         success: function (result) {
             alert('thành công');
             RenderTable();
