@@ -11,6 +11,7 @@ const RenderTable = () => {
         type: 'GET',
         url: '/assignment/permission/all',
         success: function (result) {
+            console.log(result);
             if (result.length > 0) {
                 result.forEach((item, index) => {
                     let r = `<tr>
@@ -18,11 +19,10 @@ const RenderTable = () => {
                                 <td class="text-center align-middle">${item.userName}</td>
                                 <td class="text-center align-middle">${item.email}</td>
                                 <td class="text-center align-middle">${item.roleName}</td>
-                                <td class="text-center align-middle"></td>
                                 <td class="text-center">
                                     <div class="d-flex gap-2 justify-content-center">
-                                        <a onclick="UpdateById('${item.userId}','${item.roleId}')" class="btn btn-info btn-circle btn-sm" data-toggle="modal" data-target="#productModal">
-                                            <i class="fas fa-info-circle"></i>
+                                        <a onclick="UpdateById('${item.userId}')" class="btn btn-info text-white" data-toggle="modal" data-target="#productModal">
+                                            Chi Tiết
                                         </a>
                                     </div>
                                 </td>
@@ -47,19 +47,19 @@ const RenderTable = () => {
 
 
 //Xử lý hiển thi update item by Id 
-function UpdateById(id)
+function UpdateById(userId)
 {
     $.ajax({
         type: 'GET',
-        url: '/assignment/roles/' + id,
+        url: '/assignment/permission/' + userId,
         success: function (result) {
             console.log(result);
             //Handle the response from the controller
-            if (result != null) {
-                $("#roleId").val(result.id)
-                $("#roleName").val(result.name);
-                $('#roleModal').modal('show');
-            }
+            //if (result != null) {
+            //    $("#userName").val(result.userId)
+            //    $("#roleName").val(result.roleName);
+            //    $('#permissionModal').modal('show');
+            //}
         }
     });
 }

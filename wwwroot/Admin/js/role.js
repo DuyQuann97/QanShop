@@ -21,11 +21,11 @@ const RenderTable = () => {
                                 <td class="text-center" data-id="${item.id}"><input type="checkbox" class="form-check-input checkbox-item"/></td>
                                 <td class="text-center align-middle">${item.name}</td>
                                 <td class="text-center align-middle">${item.description}</td>
-                                <td class="text-center align-middle ${item.isActive ? 'bg-success' : 'bg-danger'}">${item.isActive ? 'Kích hoạt' : 'Không Kích Hoạt'}</td>
+                                <td class="text-center align-middle text-white ${item.isActive ? 'bg-success' : 'bg-danger'}">${item.isActive ? 'Kích hoạt' : 'Không Kích Hoạt'}</td>
                                 <td class="text-center">
                                     <div class="d-flex gap-2 justify-content-center">
-                                        <a onclick="UpdateById('${item.id}')" class="btn btn-info btn-circle btn-sm" data-toggle="modal" data-target="#productModal">
-                                            <i class="fas fa-info-circle"></i>
+                                        <a onclick="UpdateById('${item.id}')" class="btn btn-info text-white" data-toggle="modal" data-target="#productModal">
+                                            Chi Tiết
                                         </a>
                                     </div>
                                 </td>

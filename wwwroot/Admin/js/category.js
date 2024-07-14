@@ -18,8 +18,8 @@ const RenderTable = () => {
                                 <td class="text-center" >${item.name}</td>
                                 <td class="text-center" >
                                     <div class="d-flex gap-2 justify-content-center">
-                                        <a onclick="UpdateById('${item.id}')" class="btn btn-info btn-circle btn-sm" data-toggle="modal" data-target="#categoryModal">
-                                            <i class="fas fa-info-circle"></i>
+                                        <a onclick="UpdateById('${item.id}')" class="btn btn-info text-white" data-toggle="modal" data-target="#categoryModal">
+                                            Chi Tiết
                                         </a>
                                     </div>
                                 </td>

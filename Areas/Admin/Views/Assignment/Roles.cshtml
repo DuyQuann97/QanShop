@@ -8,16 +8,16 @@
 <!-- DataTales Example -->
 <div class="card shadow">
     <div class="card-header py-3 d-flex justify-content-between">
-        <h6 class="m-0 font-weight-bold text-primary">Roles DataTables</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Quản Lý Vai Trò</h6>
 
         <!-- Button trigger modal -->
         <div>
             <a href="#" id="deleteAccount" onclick="Deleted()" class="btn btn-danger text-end">
-                Delete
+                Xóa
             </a>
 
             <a href="#" id="addAccount" onclick="resetModal()" class="btn btn-primary text-end" data-toggle="modal" data-target="#roleModal">
-                Add New Role
+                Thêm Mới Vai Trò
             </a>
         </div>
     </div>
@@ -39,10 +39,10 @@
                                 <input type="checkbox" id="allCheckbox" class="form-check-input" />
                             </div>
                         </th>
-                        <th>Role's Name</th>
-                        <th>Description</th>
-                        <th>Status</th>
-                        <th>Action</th>
+                        <th>Tên Vai Trò</th>
+                        <th>Mô Tả</th>
+                        <th>Trạng Thái</th>
+                        <th>Sự Kiện</th>
                     </tr>
                 </thead>
                 <tbody id="listRole"></tbody>

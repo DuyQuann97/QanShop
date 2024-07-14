@@ -7,22 +7,22 @@
 <!-- DataTales Example -->
 <div class="card shadow">
     <div class="card-header py-3 d-flex justify-content-between">
-        <h6 class="m-0 font-weight-bold text-primary">Account DataTables</h6>
+        <h3 class="m-0 font-weight-bold text-primary">Danh Sách Tài Khoản</h3>
 
         <!-- Button trigger modal -->
         <div>
-            <a href="#" id="deleteAccount" onclick="Deleted()" class="btn btn-danger text-end">
-                Delete
+            <a id="deleteAccount" onclick="Deleted()" class="btn btn-danger text-end">
+                Xóa
             </a>
 
-            <a href="#" id="addAccount" onclick="resetModal()" class="btn btn-primary text-end" data-toggle="modal" data-target="#accountModal">
-                Add New Account
+            <a id="addAccount" onclick="resetModal()" class="btn btn-primary text-end" data-toggle="modal" data-target="#accountModal">
+                Thêm Mới Tài Khoản
             </a>
         </div>
     </div>
     <div class="card-body">
         <div class="table-responsive text-nowrap">
-            <table class="table table-bordered table-hover">
+            <table class="table table-bordered table-hover display" style="width:100%">
                 <colgroup>
                     <col style="width: 5%" />
                     <col style="width: 20%" />
@@ -49,22 +49,6 @@
                     </tr>
                 </thead>
                 <tbody id="listAccount"></tbody>
-                <tfoot>
-                    <tr class="text-center">
-                        <th>
-                            <div class="text-center">
-                                <span style="color: white">.</span>
-                                <input type="checkbox" id="allCheckbox" class="form-check-input" />
-                            </div>
-                        </th>
-                        <th>Tài khoản</th>
-                        <th>Thư điện tử</th>
-                        <th>Xác nhận Email</th>
-                        <th>Điện thoại</th>
-                        <th>Trạng thái</th>
-                        <th>Sự kiện</th>
-                    </tr>
-                </tfoot>
             </table>
         </div>
     </div>
