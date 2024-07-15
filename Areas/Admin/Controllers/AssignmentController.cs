@@ -43,10 +43,6 @@ namespace QanShop.Areas.Admin.Controllers
         public async Task<IActionResult> GetRoleById(Guid id) 
         {
             var item = await _roleManager.FindByIdAsync(id.ToString());
-            if (item == null)
-            {
-                return NotFound();
-            }
             return Ok(item);
         }
 
@@ -130,7 +126,7 @@ namespace QanShop.Areas.Admin.Controllers
             return BadRequest(result.Errors);
         }
 
-        
+
         #endregion
     }
 }

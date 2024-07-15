@@ -27,8 +27,8 @@ const RenderTable = () => {
                                 <td class="text-center ${item.isActive ? 'bg-success' : 'bg-danger'} align-middle text-white">${item.isActive ? 'Kích hoạt' : 'Không Kích Hoạt'}</td>
                                 <td class="text-center">
                                     <div class="d-flex gap-2 justify-content-center">
-                                        <a onclick="UpdateById('${item.id}')" class="btn btn-info text-white" data-toggle="modal" data-target="#productModal">
-                                            Chi Tiết
+                                        <a onclick="UpdateById('${item.id}')" class="btn btn-info btn-circle btn-sm" data-toggle="modal" data-target="#productModal">
+                                            <i class="fas fa-info-circle"></i>
                                         </a>
                                     </div>
                                 </td>
@@ -37,7 +37,7 @@ const RenderTable = () => {
                 });
             } else {
                 let r = `<tr>
-                            < td class="text-center" colspan = "7">Không có dữ liệu</td>
+                            < td class="text-center" colspan = "7"">Không có dữ liệu</td>
 					    </tr >` ;
                 $("#listProduct").append(r);
             }
@@ -85,7 +85,7 @@ function UpdateById(id)
                 $("#description").val(result.description);
                 $("#formFile").val();
                 $("#areaimage").empty();
-                $("#areaimage").append(`<img src="${result.imageUrl}" class="img-fluid" alt="Image" style="max-width:80%"/>`);
+                $("#areaimage").append(`<img src="${result.imageUrl}" class="img-fluid" alt="Image" />`);
                 $('#productModal').modal('show');
             }
         }
@@ -95,7 +95,7 @@ function UpdateById(id)
 //Xử hiển thị Image ở Modal
 $('#formFile').change(function () {
     $('#areaimage').empty();
-    $('#areaimage').append(`<img src="${URL.createObjectURL(this.files[0])}" class="img-fluid" alt="Image" style="max-width:80%"/>`);
+    $('#areaimage').append(`<img src="${URL.createObjectURL(this.files[0])}" class="img-fluid" alt="Image" />`);
 });
 
 // Xử lý sự kiện reset form modal sau khi create/update

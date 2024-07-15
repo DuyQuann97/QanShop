@@ -12,16 +12,16 @@
 
 <div class="card shadow">
     <div class="card-header py-3 d-flex justify-content-between">
-        <h6 class="m-0 font-weight-bold text-primary">Quản Lý Loại Sản Phẩm</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Product DataTables</h6>
 
         <!-- Button trigger modal -->
         <div>
             <a href="#" id="deleteCategory" onclick="Deleted()" class="btn btn-danger text-end">
-                Xóa
+                Delete
             </a>
 
             <a href="#" id="addCategory" onclick="resetModal()" class="btn btn-primary text-end" data-toggle="modal" data-target="#categoryModal">
-                Thêm Mới Loại Sản Phẩm
+                Add Category
             </a>
         </div>
     </div>
@@ -43,9 +43,9 @@
                             </div>
                         </th>
                         <th>STT</th>
-                        <th>ID Loại Sản Phẩm</th>
-                        <th>Tên Loại Sản Phẩm</th>
-                        <th>Sự Kiện</th>
+                        <th>ID Category</th>
+                        <th>Tên Category</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody id="listCategories"></tbody>
@@ -55,6 +55,7 @@
 </div>
 <!-- /.container-fluid -->
 @await Html.PartialAsync("AddCategoryPartialView")
+@await Html.PartialAsync("EditCategoryPartialView")
 
 @section scripts {
     <script src="~/admin/js/category.js"></script>

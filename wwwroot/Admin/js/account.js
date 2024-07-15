@@ -25,8 +25,8 @@ const RenderTable = () => {
                                 <td class="text-center align-middle">${item.lockoutEnabled ? 'Đã kích Hoạt' : 'Chưa kích hoạt'}</td>
                                 <td class="text-center">
                                     <div class="d-flex gap-2 justify-content-center">
-                                        <a onclick="UpdateById('${item.id}')" class="btn btn-info text-white" data-toggle="modal" data-target="#accountModal">
-                                            Chi Tiết
+                                        <a onclick="UpdateById('${item.id}')" class="btn btn-info btn-circle btn-sm" data-toggle="modal" data-target="#accountModal">
+                                            <i class="fas fa-info-circle"></i>
                                         </a>
                                     </div>
                                 </td>
@@ -35,7 +35,7 @@ const RenderTable = () => {
                 });
             } else {
                 let r = `<tr>
-                            <td class="text-center" colspan = "7">Không có dữ liệu</td>
+                            <td class="text-center" colspan = "7"">Không có dữ liệu</td>
 					    </tr >` ;
                 $("#listAccount").append(r);
             }
