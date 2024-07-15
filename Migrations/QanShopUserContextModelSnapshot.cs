@@ -3,20 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using QanShop.Data;
 
 #nullable disable
 
-namespace QanShop.Migrations.QanShopUser
+namespace QanShop.Migrations
 {
     [DbContext(typeof(QanShopUserContext))]
-    [Migration("20240626161407_addIsActiveRole")]
-    partial class addIsActiveRole
+    partial class QanShopUserContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
