@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewData["Title"] = "Store";
+}
+
+<div class="card shadow">
+    <div class="card-header py-3 d-flex justify-content-between">
+        <h3 class="m-0 font-weight-bold text-primary">Danh Sách Các Cửa Hàng</h3>
+
+        <!-- Button trigger modal -->
+        <div>
+            <a href="#" id="deleteProduct" onclick="Deleted()" class="btn btn-danger text-end">
+                Xóa
+            </a>
+
+            <a href="#" id="addProduct" onclick="resetModal()" class="btn btn-primary text-end" data-toggle="modal" data-target="#productModal">
+                Thêm Cửa Hàng
+            </a>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive text-nowrap">
+            <table class="table table-bordered table-hover">
+                <colgroup>
+                    <col style="width: 5%" />
+                    <col style="width: 25%" />
+                    <col style="width: 30%" />
+                    <col style="width: 20%" />
+                    <col style="width: 20%" />
+                </colgroup>
+                <thead>
+                    <tr class="text-center">
+                        <th>
+                            <div class="text-center">
+                                <span style="color: white">.</span>
+                                <input type="checkbox" id="allCheckbox" class="form-check-input" />
+                            </div>
+                        </th>
+                        <th>Cửa Hàng</th>
+                        <th>Địa Chỉ</th>
+                        <th>Số Điện Thoại</th>
+                        <th>Thời Gian Hoạt Động</th>
+                        <th>Sự Kiện</th>
+
+                    </tr>
+                </thead>
+                <tbody id="listProduct"></tbody>
+                
+            </table>
+        </div>
+    </div>
+</div>
+<!-- /.container-fluid -->
+

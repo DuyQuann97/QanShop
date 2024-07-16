@@ -86,12 +86,34 @@
                             Xem chi tiết sản phẩm
                         </a>
                         <a class="nav-link" asp-area="Admin" asp-controller="Category" asp-action="Index">
-                            <span>Các loại sản phẩm</span>
+                            Các loại sản phẩm
                         </a>
                     </div>
                 </div>
             </li>
             <hr class="sidebar-divider" />
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Quản Lý Cửa Hàng
+            </div>
+
+            <!-- Nav Item - Quản lý Sản Phầm-->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#storeMenu"
+                   aria-expanded="true" aria-controls="collapsePages">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Cửa Hàng</span>
+                </a>
+                <div id="storeMenu" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" asp-area="Admin" asp-controller="Store" asp-action="Index">
+                            <span>Danh sách các sản phẩm</span>
+                        </a>
+                        
+                    </div>
+                </div>
+            </li>
 
             <!-- Heading -->
             <div class="sidebar-heading">
