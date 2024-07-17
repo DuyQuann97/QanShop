@@ -13,7 +13,8 @@ namespace QanShop.Models.Domains
 
         public int PhoneNumber { get; set; }
 
-        public DateTime Time { get; set; }
+        public TimeOnly TimeOpen { get; set; }
+        public TimeOnly TimeClose { get; set; }
 
         public string? Note { get; set; }
     }

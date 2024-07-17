@@ -9,11 +9,11 @@
 
         <!-- Button trigger modal -->
         <div>
-            <a href="#" id="deleteProduct" onclick="Deleted()" class="btn btn-danger text-end">
+            <a href="#" id="deleteStore" onclick="Deleted()" class="btn btn-danger text-end">
                 Xóa
             </a>
 
-            <a href="#" id="addProduct" onclick="resetModal()" class="btn btn-primary text-end" data-toggle="modal" data-target="#productModal">
+            <a href="#" id="addStore" onclick="resetModal()" class="btn btn-primary text-end" data-toggle="modal" data-target="#storeModal">
                 Thêm Cửa Hàng
             </a>
         </div>
@@ -23,10 +23,11 @@
             <table class="table table-bordered table-hover">
                 <colgroup>
                     <col style="width: 5%" />
+                    <col style="width: 20%" />
                     <col style="width: 25%" />
-                    <col style="width: 30%" />
                     <col style="width: 20%" />
                     <col style="width: 20%" />
+                    <col style="width: 10%" />
                 </colgroup>
                 <thead>
                     <tr class="text-center">
@@ -44,11 +45,15 @@
 
                     </tr>
                 </thead>
-                <tbody id="listProduct"></tbody>
+                <tbody id="listStore"></tbody>
                 
             </table>
         </div>
     </div>
 </div>
 <!-- /.container-fluid -->
+@await Html.PartialAsync("StorePartialView")
 
+@section scripts {
+    <script src="~/admin/js/store.js"></script>
+}
