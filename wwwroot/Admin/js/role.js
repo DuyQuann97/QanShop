@@ -21,7 +21,7 @@ const RenderTable = () => {
                                 <td class="text-center" data-id="${item.id}"><input type="checkbox" class="form-check-input checkbox-item"/></td>
                                 <td class="text-center align-middle">${item.name}</td>
                                 <td class="text-center align-middle">${item.description}</td>
-                                <td class="text-center align-middle ${item.isActive ? 'bg-success' : 'bg-danger'}">${item.isActive ? 'Kích hoạt' : 'Không Kích Hoạt'}</td>
+                                <td class="text-center align-middle text-white ${item.isActive ? 'bg-success' : 'bg-danger'}">${item.isActive ? 'Kích hoạt' : 'Không Kích Hoạt'}</td>
                                 <td class="text-center">
                                     <div class="d-flex gap-2 justify-content-center">
                                         <a onclick="UpdateById('${item.id}')" class="btn btn-info btn-circle btn-sm" data-toggle="modal" data-target="#productModal">
@@ -76,7 +76,7 @@ function resetModal()
     $("#roleId").val('');
     $("#roleName").val('');
     $("#roleDescription").val('');
-    $("#roleIsActive").prop('checked', true);
+    $("#roleIsActive").prop('checked', false);
 }
 
 //xử lý sự kiện check-box true and fasle
@@ -93,7 +93,7 @@ function RoleModalBtn() {
     var roleId = $("#roleId").val();
     var roleName = $("#roleName").val();
     var roleDescription = $("#roleDescription").val();
-    var roleIsActive = $("#roleName").val();
+    var roleIsActive = $("#roleIsActive").val();
 
     //create form data
     if (roleId === '') {

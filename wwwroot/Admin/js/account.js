@@ -2,7 +2,6 @@
 
 $(document).ready(() => {
     RenderTable();
-    renderCategory();
 });
 
 
@@ -18,11 +17,11 @@ const RenderTable = () => {
                 result.forEach((item, index) => {
                     let r = `<tr>
                                 <td class="text-center" data-id="${item.id}"><input type="checkbox" class="form-check-input checkbox-item"/></td>
-                                <td class="text-center align-middle">${item.userName}</td>
+                                <td class="text-center align-middle">${item.fullName == null ? "" : item.fullName}</td>
                                 <td class="text-center align-middle">${item.email}</td>
                                 <td class="text-center text-white ${item.emailConfirmed ? 'bg-success' : 'bg-danger'}">${item.emailConfirmed ? 'Đã xác thực' : 'Chưa xác thực'}</td>
                                 <td class="text-center align-middle">${item.phoneNumber == null ? "" : item.phoneNumber}</td>
-                                <td class="text-center align-middle">${item.lockoutEnabled ? 'Đã kích Hoạt' : 'Chưa kích hoạt'}</td>
+                                <td class="text-center align-middle text-white ${item.lockoutEnabled ? 'bg-success' : 'bg-danger'}">${item.lockoutEnabled ? 'Chưa Khóa' : 'Đã Khóa'}</td>
                                 <td class="text-center">
                                     <div class="d-flex gap-2 justify-content-center">
                                         <a onclick="UpdateById('${item.id}')" class="btn btn-info btn-circle btn-sm" data-toggle="modal" data-target="#accountModal">
@@ -35,7 +34,7 @@ const RenderTable = () => {
                 });
             } else {
                 let r = `<tr>
-                            <td class="text-center" colspan = "7"">Không có dữ liệu</td>
+                            <td class="text-center" colspan ="7">Không có dữ liệu</td>
 					    </tr >` ;
                 $("#listAccount").append(r);
             }
@@ -56,6 +55,9 @@ function UpdateById(id)
                 $("#userId").val(result.id);
                 $("#userName").val(result.userName);
                 $("#userEmail").val(result.email);
+                $("#userFullName").val(result.fullName);
+                $("#userAddress").val(result.address);
+                $("#userPhone").val(result.phoneNumber);
                 $("#passWordInput").hide();
                 $("#isEmailConfirmed").prop('checked', result.emailConfirmed); 
                 
@@ -71,6 +73,9 @@ function resetModal()
     $("#userId").val('');
     $("#userName").val('');
     $("#userEmail").val('');
+    $("#userFullName").val('');
+    $("#userAddress").val('');
+    $("#userPhone").val('');
     $("#isEmailConfirmed").prop('checked', false);
     $("#password").val('');
 }
@@ -90,6 +95,9 @@ function AccoutnModalBtn() {
     var userName = $("#userName").val();
     var userEmail = $("#userEmail").val();
     var userPassword = $("#password").val();
+    var userFullName = $("#userFullName").val();
+    var userAddress = $("#userAddress").val();
+    var userPhone = $("#userPhone").val();
     var isEmailConfirmed = $("#isEmailConfirmed").val();
 
     //create form data
@@ -102,7 +110,10 @@ function AccoutnModalBtn() {
                 userName: userName,
                 email: userEmail,
                 password: userPassword,
-                emailConfirmed: isEmailConfirmed
+                emailConfirmed: isEmailConfirmed,
+                fullName: userFullName,
+                address: userAddress,
+                phoneNumber: userPhone
             },
 
             success: function (result) {
@@ -124,7 +135,10 @@ function AccoutnModalBtn() {
             data: {
                 userName: userName,
                 email: userEmail,
-                emailConfirmed: isEmailConfirmed
+                emailConfirmed: isEmailConfirmed,
+                fullName: userFullName,
+                address: userAddress,
+                phoneNumber: userPhone
             },
             success: function (result) {
                 //Handle the response from the controller

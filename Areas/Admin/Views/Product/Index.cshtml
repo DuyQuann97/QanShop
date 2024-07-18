@@ -11,16 +11,16 @@
     <!-- DataTales Example -->
 <div class="card shadow">
         <div class="card-header py-3 d-flex justify-content-between">
-            <h6 class="m-0 font-weight-bold text-primary">Product DataTables</h6>
+            <h3 class="m-0 font-weight-bold text-primary">Danh Sách Sản Phẩm</h3>
 
             <!-- Button trigger modal -->
             <div>
                 <a href="#" id="deleteProduct" onclick="Deleted()" class="btn btn-danger text-end">
-                    Delete
+                    Xóa
                 </a>
 
                 <a href="#" id="addProduct" onclick="resetModal()" class="btn btn-primary text-end" data-toggle="modal" data-target="#productModal">
-                    Add Product
+                    Thêm Sản Phẩm
                 </a>
             </div>
         </div>
@@ -55,20 +55,7 @@
                     </tr>
                 </thead>
                 <tbody id="listProduct"></tbody>
-                <tfoot>
-                    <tr class="text-center">
-                        <th>
-                            <input type="checkbox" id="allCheckbox" class="form-check-input" />
-                        </th>
-                        <th>STT</th>
-                        <th>Tên Sản Phẩm</th>
-                        <th>Hình Ảnh</th>
-                        <th>Giá Tiền</th>
-                        <th>Loại</th>
-                        <th>Active</th>
-                        <th>Sự Kiện</th>
-                    </tr>
-                </tfoot>
+                
             </table>
             </div>
         </div>

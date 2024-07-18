@@ -3,7 +3,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="accountLabel">Add Account</h5>
+                <h5 class="modal-title" id="accountLabel">Thông Tin Tài Khoản</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -12,16 +12,28 @@
                 <div class="d-flex justify-content-between gap-3">
                     <input type="text" id="userId" value="" hidden />
                     <div class="col">
+                        <div class="mb-3" hidden>
+                            <label for="userName" class="col-form-label">Tên</label>
+                            <input type="text" class="form-control" id="userName" value="" placeholder="Nhập tên tài khoản">
+                        </div>
                         <div class="mb-3">
-                            <label for="userName" class="col-form-label">User Name</label>
-                            <input type="text" class="form-control" id="userName" value="" placeholder="">
+                            <label for="userFullName" class="col-form-labe mr-2 pt-1">Tên Tài Khoản</label>
+                            <input type="text" class="form-control" id="userFullName" value="" placeholder="VD: Nguyễn Văn A,...">
                         </div>
                         <div class="mb-3">
                             <label for="userEmail" class="col-form-labe mr-2 pt-1">Email</label>
-                            <input type="email" class="form-control" id="userEmail" value="" placeholder="" min="1">
+                            <input type="email" class="form-control" id="userEmail" value="" placeholder="Nhập email" disabled>
                         </div>
-                        <div class="mb-3" id="passWordInput">
-                            <label for="password" class="col-form-labe mr-2 pt-1">Password</label>
+                        <div class="mb-3">
+                            <label for="userPhone" class="col-form-labe mr-2 pt-1">Số Điện Thoại</label>
+                            <input type="email" class="form-control" id="userPhone" value="" placeholder="Nhập số điện thoại" >
+                        </div>
+                        <div class="mb-3">
+                            <label for="userAddress" class="col-form-labe mr-2 pt-1">Địa Chỉ</label>
+                            <input type="email" class="form-control" id="userAddress" value="" placeholder="Nhập địa chỉ">
+                        </div>
+                        <div class="mb-3" id="passWordInput" hidden>
+                            <label for="password" class="col-form-labe mr-2 pt-1">Mật khẩu</label>
                             <input type="password" class="form-control" id="password" value="" placeholder="">
                         </div>
                         <div class="form-check ">
@@ -38,8 +50,8 @@
                     
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button id="submit" type="button" class="btn btn-primary" onclick="AccoutnModalBtn()">OK</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                <button id="submit" type="button" class="btn btn-primary" onclick="AccoutnModalBtn()">Lưu</button>
             </div>
         </div>
     </div>

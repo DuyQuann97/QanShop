@@ -12,16 +12,16 @@
 
 <div class="card shadow">
     <div class="card-header py-3 d-flex justify-content-between">
-        <h6 class="m-0 font-weight-bold text-primary">Product DataTables</h6>
+        <h3 class="m-0 font-weight-bold text-primary">Danh Sách Các Loại Sản Phầm</h3>
 
         <!-- Button trigger modal -->
         <div>
             <a href="#" id="deleteCategory" onclick="Deleted()" class="btn btn-danger text-end">
-                Delete
+                Xóa
             </a>
 
             <a href="#" id="addCategory" onclick="resetModal()" class="btn btn-primary text-end" data-toggle="modal" data-target="#categoryModal">
-                Add Category
+                Thêm Loại Sản Phẩm
             </a>
         </div>
     </div>
@@ -42,10 +42,10 @@
                                 <input type="checkbox" id="allCheckbox" class="form-check-input" />
                             </div>
                         </th>
-                        <th>STT</th>
-                        <th>ID Category</th>
-                        <th>Tên Category</th>
-                        <th>Action</th>
+                        <th>#</th>
+                        <th>Mã Loại</th>
+                        <th>Tên Loại</th>
+                        <th>Sự Kiên</th>
                     </tr>
                 </thead>
                 <tbody id="listCategories"></tbody>

@@ -103,14 +103,17 @@ namespace QanShop.Areas.Admin.Controllers
         //Put: Admin/Account/update/id
         [Route("update/{id}")]
         [HttpPut]
-        public async Task<IActionResult> Update(Guid id, string? userName, string? email, bool emailConfirmed) 
+        public async Task<IActionResult> Update(Guid id,QanShopUser input) 
         {
             var user = await _userManager.FindByIdAsync(id.ToString());
             if (user != null) 
             {
-                user.UserName = userName;
-                user.Email = email;
-                user.EmailConfirmed = emailConfirmed;
+                user.UserName = input.UserName;
+                user.Email = input.Email;
+                user.EmailConfirmed = input.EmailConfirmed;
+                user.FullName = input.FullName;
+                user.Address = input.Address;
+                user.PhoneNumber = input.PhoneNumber;
             };
             
 

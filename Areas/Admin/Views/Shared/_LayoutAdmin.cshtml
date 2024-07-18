@@ -64,7 +64,7 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Quản Lý Sản Phẩm
+                Mục Sản Phẩm
             </div>
 
             <!-- Nav Item - Quản lý Sản Phầm-->
@@ -72,21 +72,15 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#productMenu"
                    aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-folder"></i>
-                    <span>Sản phẩm</span>
+                    <span>Quản Lý Sản phẩm</span>
                 </a>
                 <div id="productMenu" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" asp-area="Admin" asp-controller="Product" asp-action="Index">
-                            <span>Danh sách các sản phẩm</span>
+                            <span>Các sản phẩm</span>
                         </a>
-                        <a class="collapse-item" href="#">
-                            Thêm mới sản phẩm
-                        </a>
-                        <a class="collapse-item" href="#">
-                            Xem chi tiết sản phẩm
-                        </a>
-                        <a class="nav-link" asp-area="Admin" asp-controller="Category" asp-action="Index">
-                            Các loại sản phẩm
+                        <a class="collapse-item" asp-area="Admin" asp-controller="Category" asp-action="Index">
+                            <span>Phân Loại Sản Phẩm</span>
                         </a>
                     </div>
                 </div>
@@ -133,7 +127,7 @@
                             <span>Danh sách người dùng</span>
                         </a>
                         <a class="collapse-item" class="collapse-item" asp-area="Admin" asp-controller="Assignment" asp-action="Roles">
-                            Vai Trò
+                            Quyền Hạn
                         </a>
                         <a class="collapse-item" asp-area="Admin" asp-controller="Assignment" asp-action="Permission">
                             Phân Quyền người dùng

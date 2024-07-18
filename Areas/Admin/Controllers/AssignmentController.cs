@@ -103,14 +103,13 @@ namespace QanShop.Areas.Admin.Controllers
                         join role in _userContext.Roles on userrole.RoleId equals role.Id
                         select new
                         {
+                            user.FullName,
                             userrole.UserId,
-                            user.UserName,
                             user.Email,
-                            userrole.RoleId,
                             RoleName = role.Name,
                         };
 
-            var result= await query.ToListAsync();
+            var result= await query.OrderBy(x => x.FullName).ToListAsync();
             return Ok(result);
         }
 
@@ -122,7 +121,7 @@ namespace QanShop.Areas.Admin.Controllers
             if (roleName == "") return BadRequest("Role Not Found");
 
             var result =await _userManager.AddToRoleAsync(user, roleName);
-            if (result.Succeeded) return Ok();
+            if (result.Succeeded) return Ok(result);
             return BadRequest(result.Errors);
         }
 

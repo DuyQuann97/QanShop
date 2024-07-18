@@ -11,11 +11,12 @@ const RenderTable = () => {
         type: 'GET',
         url: '/assignment/permission/all',
         success: function (result) {
+            console.log(result);
             if (result.length > 0) {
                 result.forEach((item, index) => {
                     let r = `<tr>
                                 <td class="text-center" data-id="${item.userId}"><input type="checkbox" class="form-check-input checkbox-item"/></td>
-                                <td class="text-center align-middle">${item.userName}</td>
+                                <td class="text-center align-middle">${item.fullName}</td>
                                 <td class="text-center align-middle">${item.email}</td>
                                 <td class="text-center align-middle">${item.roleName}</td>
                                 <td class="text-center align-middle"></td>
@@ -87,6 +88,7 @@ function PermissionModalBtn() {
         },
 
         success: function (result) {
+            console
             //Handle the response from the controller
             if (result) {
                 $("#permissionModal").modal('hide');
@@ -140,7 +142,7 @@ function renderAccounts() {
                         `);
                 data.forEach((item, index) => {
                     $('#userName').append(`
-                            <option value="${item.id}">${item.userName}</option>
+                            <option value="${item.id}">${item.fullName} - ${item.email}</option>
                         `);
                 });
             } else {
