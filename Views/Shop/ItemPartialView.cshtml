@@ -2,7 +2,7 @@
 <link href="~/css/shop.css" rel="stylesheet" />
 @foreach (var item in Model)
 {
-    <div class="col-md-4">
+    <div class="col">
         <div class="card mb-4 product-wap rounded-0">
             <div class="card rounded-0">
                 <img class="card-img rounded-0 img-fluid" src="@item.ImageUrl">
@@ -15,7 +15,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <a href="#" class="h3 text-decoration-none">@item.Name</a>
+                <a href="@item.Id" class="h3 text-decoration-none">@item.Name</a>
                 <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
                     <li>M/L/X/XL</li>
                 </ul>

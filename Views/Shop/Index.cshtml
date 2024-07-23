@@ -19,7 +19,8 @@
 <div class="container py-5">
     <div class="row">
 
-        <div class="col-lg-3">
+        <!-- #region Lọc Sản Phẩm -->
+        @* <div class="col-lg-3">
             <h1 class="h2 pb-4">Categories</h1>
             <ul class="list-unstyled templatemo-accordion">
                 <li class="pb-3">
@@ -54,42 +55,45 @@
                     </ul>
                 </li>
             </ul>
-        </div>
+        </div> *@
+        <!-- #endregion -->
 
-        <div class="col-lg-9">
+
+
+        <div class="col">
             <div class="row">
                 <div class="col-md-6">
                     <ul class="list-inline shop-top-menu pb-3 pt-1">
                         <li class="list-inline-item">
-                            <a class="h3 text-dark text-decoration-none mr-3" href="#">All</a>
+                            <a class="h3 text-dark text-decoration-none mr-3" href="#">Tất Cả</a>
                         </li>
                         <li class="list-inline-item">
-                            <a class="h3 text-dark text-decoration-none mr-3" href="#">Shirts</a>
+                            <a class="h3 text-dark text-decoration-none mr-3" href="#">Áo Nam</a>
                         </li>
                         <li class="list-inline-item">
-                            <a class="h3 text-dark text-decoration-none" href="#">Trousers</a>
+                            <a class="h3 text-dark text-decoration-none" href="#">Quần Nam</a>
                         </li>
                     </ul>
                 </div>
                 <div class="col-md-6 pb-4">
                     <div class="d-flex">
                         <select class="form-control">
-                            <option>Featured</option>
-                            <option>A to Z</option>
-                            <option>Item</option>
+                            <option>Theo tên A - Z</option>
+                            <option>Giá từ thấp đến cao</option>
+                            <option>Giá từ cao xuống cao</option>
                         </select>
                     </div>
                 </div>
             </div>
 
             @* List Items -- Start*@
-            <div class="row">
+            <div class="row row-cols-4">
                 @{await Html.RenderPartialAsync("ItemPartialView");}
             </div>
             @* List Items -- End*@
             <div div="row">
                 <ul class="pagination pagination-lg justify-content-end">
-                    <li class="page-item disabled">
+                    <li class="page-item">
                         <a class="page-link active rounded-0 mr-3 shadow-sm border-top-0 border-left-0" href="#" tabindex="-1">1</a>
                     </li>
                     <li class="page-item">

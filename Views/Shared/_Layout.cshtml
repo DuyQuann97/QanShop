@@ -86,19 +86,25 @@
     <div class="search-popup">
         <div class="search-popup-container">
 
-          <form role="search" method="get" class="search-form" action="">
-            <input type="search" id="search-form" class="search-field" placeholder="Type and press enter" value="" name="s" />
-            <button type="submit" class="search-submit"><svg class="search"><use xlink:href="#search"></use></svg></button>
-          </form>
+            <div class="input-group input-group-lg">
+                <input type="text" id="inputSearch" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                <button type="button" onclick="GetProduct()">
+                    <span class="input-group-text" id="inputGroup-sizing-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                        </svg>
+                    </span>
+                </button>
+            </div>
 
-          <h5 class="cat-list-title">Browse Categories</h5>
+          <h5 class="cat-list-title">Theo Loại</h5>
           
           <ul class="cat-list">
             <li class="cat-list-item">
-              <a href="#" title="Mobile Phones">Shirts</a>
+              <a href="https://localhost:7177/#shirt-products">Áo Nam</a>
             </li>
             <li class="cat-list-item">
-              <a href="#" title="Smart Watches">Trousers</a>
+              <a href="https://localhost:7177/#trouser-products" title="Smart Watches">Quần Nam</a>
             </li>
           </ul>
 
@@ -126,34 +132,34 @@
             <div class="offcanvas-body">
               <ul id="navbar" class="navbar-nav text-uppercase justify-content-end align-items-center flex-grow-1 pe-3">
                 <li class="nav-item">
-                  <a class="nav-link me-4 active" asp-controller="Home" asp-action="Index">Home</a>
+                  <a class="nav-link me-4 active" asp-controller="Home" asp-action="Index">Trang Chủ</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link me-4" href="#company-services">Services</a>
+                  <a class="nav-link me-4" href="https://localhost:7177/#company-services">Dịch Vụ</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link me-4" href="#shirt-products">Shirts</a>
-                </li>
+                  <a class="nav-link me-4" href="https://localhost:7177/#shirt-products">Áo Nam</a>
+                </li> 
                 <li class="nav-item">
-                  <a class="nav-link me-4" href="#trouser-products">Trousers</a>
+                  <a class="nav-link me-4" href="https://localhost:7177/#trouser-products">Quần Nam</a>
                 </li>
                 <li class="nav-item dropdown">
-                  <a class="nav-link me-4 dropdown-toggle link-dark" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Pages</a>
+                  <a class="nav-link me-4 dropdown-toggle link-dark" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Thêm</a>
                   <ul class="dropdown-menu">
                     <li>
-                      <a href="about.html" class="dropdown-item">About</a>
+                      <a href="about.html" class="dropdown-item">Về Chúng Tôi</a>
                     </li>
                     <li>
-                      <a asp-controller="Shop" asp-action="Index" class="dropdown-item">Shop</a>
+                      <a asp-controller="Shop" asp-action="Index" class="dropdown-item">Sản Phẩm</a>
                     </li>
                     <li>
-                      <a asp-controller="Cart" asp-action="Index" class="dropdown-item">Cart</a>
+                      <a asp-controller="Cart" asp-action="Index" class="dropdown-item">Giỏ Hàng</a>
                     </li>
                     <li>
-                      <a href="checkout.html" class="dropdown-item">Checkout</a>
+                      <a href="checkout.html" class="dropdown-item">Thanh Toán</a>
                     </li>
                     <li>
-                      <a href="contact.html" class="dropdown-item">Contact</a>
+                      <a href="contact.html" class="dropdown-item">Liên Hệ</a>
                     </li>
                   </ul>
                 </li>
@@ -236,6 +242,7 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/script.js"></script>
     <script src="~/js/cart.js"></script>
+    <script src="~/js/product.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
