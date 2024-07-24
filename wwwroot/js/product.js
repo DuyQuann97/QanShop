@@ -74,27 +74,40 @@ const RenderProduct = () => {
 
 function GetProduct() {
     var searchKey = $("#inputSearch").val();
-    $.ajax({
+    //$.ajax({
+    //    type: 'POST',
+    //    url: 'https://localhost:7071/Product/',
+    //    data: {
+    //        keyWord: searchKey
+    //    },
+    //    contentType: 'application/json',
+    //    dataType: "json",
+    //    success: function (data) {
+    //        console.log(data);
+    //        //var table = $("#tblCustomers");
+    //        //table.find("tr:not(:first)").remove();
+    //        //$.each(customers, function (i, customer) {
+    //        //    var table = $("#tblCustomers");
+    //        //    var row = table[0].insertRow(-1);
+    //        //    $(row).append("<td />");
+    //        //    $(row).find("td").eq(0).html(customer.CustomerID);
+    //        //    $(row).append("<td />");
+    //        //    $(row).find("td").eq(1).html(customer.ContactName);
+    //        //    $(row).append("<td />");
+    //        //    $(row).find("td").eq(2).html(customer.City);
+    //        //    $(row).append("<td />");
+    //        //    $(row).find("td").eq(3).html(customer.Country);
+    //        //});
+    //    }
+    //});
+
+    $.ajax('https://localhost:7071/Product/search', {
         type: 'GET',
-        url: 'https://localhost:7071/Product/'
-        data: { keyword: searchKey },
-        success: function (data) {
-            console.log(data);
-            //var table = $("#tblCustomers");
-            //table.find("tr:not(:first)").remove();
-            //$.each(customers, function (i, customer) {
-            //    var table = $("#tblCustomers");
-            //    var row = table[0].insertRow(-1);
-            //    $(row).append("<td />");
-            //    $(row).find("td").eq(0).html(customer.CustomerID);
-            //    $(row).append("<td />");
-            //    $(row).find("td").eq(1).html(customer.ContactName);
-            //    $(row).append("<td />");
-            //    $(row).find("td").eq(2).html(customer.City);
-            //    $(row).append("<td />");
-            //    $(row).find("td").eq(3).html(customer.Country);
-            //});
-        }
+        data: {
+            keyword: searchKey
+        },
+        contentType: 'application/json',
+        dataType: 'json',
     });
 }
 
