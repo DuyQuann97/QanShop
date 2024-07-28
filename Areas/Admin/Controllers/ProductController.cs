@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using AspNetCoreHero.ToastNotification.Abstractions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using QanShop.Common;
@@ -13,11 +14,13 @@ namespace QanShop.Areas.Admin.Controllers
     public class ProductController : Controller
     {
         private readonly QanShopDBContext _dbContext;
+        private readonly INotyfService _notyf;
         public static List<Product> products = new List<Product>();
 
-        public ProductController(QanShopDBContext dBContext) 
+        public ProductController(QanShopDBContext dBContext, INotyfService notyf) 
         {
             _dbContext = dBContext;
+            _notyf = notyf;
         }
 
         [Route("")]
@@ -73,6 +76,7 @@ namespace QanShop.Areas.Admin.Controllers
                 product.Id = Guid.NewGuid();
                 await _dbContext.AddAsync(product);
                 await _dbContext.SaveChangesAsync();
+                _notyf.Success("Thêm Sản Phẩm Thành Công");
                 return Ok(product);
             } 
             catch (Exception ex) 
@@ -102,6 +106,7 @@ namespace QanShop.Areas.Admin.Controllers
                 item.IsActive = product.IsActive;   
                 _dbContext.products.Update(item);
                 await _dbContext.SaveChangesAsync();
+                _notyf.Success("Cập Nhật Sản Phẩm Thành Công");
                 return Ok(product);
             }
             catch (Exception ex)
@@ -124,6 +129,7 @@ namespace QanShop.Areas.Admin.Controllers
                     _dbContext.products.Remove(result);
                 }
                 await _dbContext.SaveChangesAsync();
+                _notyf.Success("Xóa Sản Phẩm Thành Công");
                 return Ok();
             } catch (Exception ex) 
             {

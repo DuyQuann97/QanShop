@@ -22,8 +22,8 @@ const RenderTable = () => {
                                 <td class="text-center align-middle"></td>
                                 <td class="text-center">
                                     <div class="d-flex gap-2 justify-content-center">
-                                        <a onclick="UpdateById('${item.userId}','${item.roleId}')" class="btn btn-info btn-circle btn-sm" data-toggle="modal" data-target="#productModal">
-                                            <i class="fas fa-info-circle"></i>
+                                        <a onclick="Delete('${item.userId}','${item.roleName}')" class="btn btn-danger" data-toggle="modal">
+                                            Delete
                                         </a>
                                     </div>
                                 </td>
@@ -193,31 +193,18 @@ $('#allCheckbox').change(function ()
 })
 
 //Delete by Id: xử lý xóa theo danh sách
-function Deleted()
-{
-    var listItems = [];
-
-    $('.checkbox-item').each(function ()
-    {
-        if (this.checked)
-        {
-            listItems.push($(this).closest('td').data('id'))
+function Delete(id, roleName) {
+    $.ajax({
+        type: 'DELETE',
+        url: '/assignment/permission',
+        data: {
+            userId: id,
+            roleName: roleName
+        },
+        success: function (result) {
+            alert('thành công');
+            RenderTable();
         }
-    })
-
-    if (listItems.length > 0) {
-        $.ajax({
-            type: 'DELETE',
-            url: '/assignment/roles/',
-            data: { ids: listItems },
-            success: function (result) {
-                alert('thành công');
-                RenderTable();
-            }
-        });
-    } else
-    {
-        alert('Vui lòng chọn Item để xóa');
-    }
+    });
 }
 

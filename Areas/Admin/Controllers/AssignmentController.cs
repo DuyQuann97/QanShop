@@ -125,7 +125,20 @@ namespace QanShop.Areas.Admin.Controllers
             return BadRequest(result.Errors);
         }
 
+        [Route("permission")]
+        [HttpDelete]
+        public async Task<IActionResult> DeletePermission(string userId, string roleName) 
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+            {
+                return NotFound();
+            }
 
+            var result = await _userManager.RemoveFromRoleAsync(user, roleName);
+            if (result.Succeeded) return Ok(result);
+            return BadRequest(result.Errors);
+        }
         #endregion
     }
 }

@@ -60,9 +60,6 @@ function renderCategory() {
             else {
                 $('#category').append(`<option value="">Không có dữ liệu</option>`);
             }
-        },
-        error: function (error) {
-            console.log(error);
         }
     });
 }
@@ -74,7 +71,6 @@ function UpdateById(id)
         type: 'GET',
         url: '/Product/byid/' + id,
         success: function (result) {
-            console.log(result);
             //Handle the response from the controller
             if (result != null) {
                 $("#productId").val(result.id)
@@ -85,7 +81,7 @@ function UpdateById(id)
                 $("#description").val(result.description);
                 $("#formFile").val();
                 $("#areaimage").empty();
-                $("#areaimage").append(`<img src="${result.imageUrl}" class="img-fluid" alt="Image" />`);
+                $("#areaimage").append(`<img src="${result.imageUrl}" class="img-fluid" alt="Image" style="height:400px"/>`);
                 $('#productModal').modal('show');
             }
         }
@@ -157,7 +153,6 @@ function ProductModalBtn() {
                     $("#productModal").modal('hide');
                     resetModal();
                     RenderTable();
-                    alert("Thành công");
                 }
             }
         });
@@ -171,7 +166,6 @@ function ProductModalBtn() {
             contentType: false,
             processData: false,
             success: function (result) {
-                console.log(result);
                 //Handle the response from the controller
                 if (result != null) {
                     $("#productModal").modal('hide');
@@ -213,7 +207,6 @@ function Deleted()
             url: '/Product/delete',
             data: { ids: listItems },
             success: function (result) {
-                alert('thành công');
                 RenderTable();
             }
         });

@@ -101,13 +101,18 @@ function GetProduct() {
     //    }
     //});
 
-    $.ajax('https://localhost:7071/Product/search', {
+    $.ajax({
         type: 'GET',
+        url:'https://localhost:7071/Product/search',
         data: {
             keyword: searchKey
         },
         contentType: 'application/json',
         dataType: 'json',
+
+        success: function (data) {
+            console.log(data);
+        }
     });
 }
 

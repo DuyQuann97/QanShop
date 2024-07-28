@@ -72,7 +72,7 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#productMenu"
                    aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-folder"></i>
-                    <span>Quản Lý Sản phẩm</span>
+                    <span>Sản phẩm</span>
                 </a>
                 <div id="productMenu" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
@@ -102,7 +102,7 @@
                 <div id="storeMenu" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" asp-area="Admin" asp-controller="Store" asp-action="Index">
-                            <span>Danh sách các sản phẩm</span>
+                            <span>Quản lý Cửa Hàng</span>
                         </a>
                         
                     </div>
@@ -271,6 +271,7 @@
     @*  <script src="~/lib/jquery/dist/jquery.min.js"></script> *@
     @* <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script> *@
     <script src="~/js/site.js" asp-append-version="true"></script>
+    @await Component.InvokeAsync("Notyf")
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

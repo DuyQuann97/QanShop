@@ -3,6 +3,8 @@ using QanShop.Data;
 using Microsoft.AspNetCore.Identity;
 using QanShop.Areas.Identity.Data;
 using Microsoft.Extensions.DependencyInjection;
+using AspNetCoreHero.ToastNotification;
+using AspNetCoreHero.ToastNotification.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +21,14 @@ builder.Services.AddDefaultIdentity<QanShopUser>(options => options.SignIn.Requi
 
 builder.Services.AddDbContext<QanShopUserContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("QanShopUserContextConnection")));
 builder.Services.AddRazorPages();
+
+builder.Services.AddNotyf(config =>
+{
+    config.DurationInSeconds = 10;
+    config.IsDismissable = true;
+    config.Position = NotyfPosition.BottomRight;
+}
+);
 
 var app = builder.Build();
 
@@ -38,6 +48,8 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
+
+app.UseNotyf();
 
 app.MapControllerRoute(
     name: "admin",
